@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Quartz.Unity.45")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Quartz.Net integration with Unity")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Acheve Solutions")]
 [assembly: AssemblyProduct("Quartz.Unity.45")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
