@@ -16,11 +16,7 @@ Where you configure your **IUnityContainer** add this line:
 
 (You may must add a **using** statemet to **Microsoft.Practices.Unity**)
 
-You must also register your job types with:
-
-    Container.RegisterType<JobType>();
-
-In the class where you will use Quartz, you must inject and instance of IScheduler. When Unity resolves the IScheduler instance, it wil be able to 
+In the class where you will use Quartz, you must inject and instance of IScheduler. When Unity resolves the IScheduler instance, it will be able to crete Job instances based in your container. 
 
 That's all!
 
@@ -32,5 +28,3 @@ This Unity Extension registers the types **ISchedulerFactory** and **IScheduler*
     Container.RegisterType<IScheduler>(new InjectionFactory(c => c.Resolve<ISchedulerFactory>().GetScheduler()));
 
 So the **ISchedulerFactory** is a Singleton managed by the container.
-
- and a new instance of a IScheduler than can resolve jobTypes registered in the container is provided by the 
