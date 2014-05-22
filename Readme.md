@@ -5,3 +5,32 @@ Quartz.Unity contains several classes to integrate [Quartz.net](http://www.quart
 Implements a **UnityJobFactoy** that delegates to Unity the creation of Job instances and creates  **UnitySchedulerFactory** to utilize that *IJobFactory*.
 
 There is also an **UnityContainerExtension** that registers the interface *ISchedulerFactory* to resolve a *UnitySchedulerfactory* as a Singleton (ContainerControlledLifetimemanager).
+
+**Usage**
+
+Add the package to your project.
+
+Where you configure your **IUnityContainer** add this line:
+
+    Container.AddNewExtension<QuartzUnityExtension>();
+
+(You may must add a **using** statemet to **Microsoft.Practices.Unity**)
+
+You must also register your job types with:
+
+    Container.RegisterType<JobType>();
+
+In the class where you will use Quartz, you must inject and instance of IScheduler. When Unity resolves the IScheduler instance, it wil be able to 
+
+That's all!
+
+**Internals**
+
+This Unity Extension registers the types **ISchedulerFactory** and **IScheduler** in your container like this:
+
+    Container.RegisterType<ISchedulerFactory, UnitySchedulerFactory>(new ContainerControlledLifetimeManager());
+    Container.RegisterType<IScheduler>(new InjectionFactory(c => c.Resolve<ISchedulerFactory>().GetScheduler()));
+
+So the **ISchedulerFactory** is a Singleton managed by the container.
+
+ and a new instance of a IScheduler than can resolve jobTypes registered in the container is provided by the 

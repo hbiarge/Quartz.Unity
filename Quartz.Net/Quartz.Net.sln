@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20617.1 PREVIEW
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Unity.40", "Quartz.Unity.40\Quartz.Unity.40.csproj", "{A3412AE3-7F5B-4B15-9642-397BB78E5D6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Unity.45", "Quartz.Unity.45\Quartz.Unity.45.csproj", "{5E7B59F1-A8F9-41DD-A582-C55A2CF33E3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5E7B59F1-A8F9-41DD-A582-C55A2CF33E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E7B59F1-A8F9-41DD-A582-C55A2CF33E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E7B59F1-A8F9-41DD-A582-C55A2CF33E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
