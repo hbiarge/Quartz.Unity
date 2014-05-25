@@ -15,6 +15,7 @@
         {
             var container = new UnityContainer();
 
+            container.RegisterType<IConfigManager, InMemoryConfigManager>();
             container.AddNewExtension<QuartzUnityExtension>();
 
             var scheduler = container.Resolve<IScheduler>();
@@ -26,14 +27,6 @@
             scheduler.Start();
 
             Console.ReadLine();
-        }
-    }
-
-    public class MyJob : IJob
-    {
-        public void Execute(IJobExecutionContext context)
-        {
-            Console.WriteLine("Job fired!");
         }
     }
 }
