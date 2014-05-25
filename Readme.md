@@ -14,9 +14,7 @@ Where you configure your **IUnityContainer** add this line:
 
     Container.AddNewExtension<QuartzUnityExtension>();
 
-(You may must add a **using** statemet to **Microsoft.Practices.Unity**)
-
-In the class where you will use Quartz, you must inject and instance of IScheduler. When Unity resolves the IScheduler instance, it will be able to crete Job instances based in your container. 
+In the class where you will use Quartz, you must inject an instance of IScheduler. When Unity resolves the IScheduler instance, it will be able to crete Job instances based in your container. You can cretate Jobs with explicit dependencies declared in the Job constructor that will be automatically resolved by Unity when the Job is created. 
 
 That's all!
 
