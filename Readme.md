@@ -26,3 +26,9 @@ This Unity Extension registers the types **ISchedulerFactory** and **IScheduler*
     Container.RegisterType<IScheduler>(new InjectionFactory(c => c.Resolve<ISchedulerFactory>().GetScheduler()));
 
 So the **ISchedulerFactory** is a Singleton managed by the container.
+
+**Upd**
+**Objects lifetime with ChildContainer**
+
+Unity disposes instances (calls Dispose method if IDisposable) created with HierarchicalLifetimeManager. It happens when corresponding ChildContainer is disposed.
+Now every Job resolved in own ChildContainer and ChildContainer disposed after IJob.Execute completes. Implementation based on **Autofac.Extras.Quartz-master**
