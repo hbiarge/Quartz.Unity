@@ -79,25 +79,30 @@ namespace Quartz.Unity
         /// </remarks>
         internal class JobWrapper : IJob
         {
-            private readonly TriggerFiredBundle _bundle;
-            private readonly IUnityContainer _unityContainer;
-
+            private readonly TriggerFiredBundle bundle;
+            private readonly IUnityContainer unityContainer;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
             /// </summary>
             public JobWrapper(TriggerFiredBundle bundle, IUnityContainer unityContainer)
             {
-                if (bundle == null) throw new ArgumentNullException("bundle");
-                if (unityContainer == null) throw new ArgumentNullException("unityContainer");
+                if (bundle == null)
+                {
+                    throw new ArgumentNullException("bundle");
+                }
 
-                _bundle = bundle;
-                _unityContainer = unityContainer;
+                if (unityContainer == null)
+                {
+                    throw new ArgumentNullException("unityContainer");
+                }
+
+                this.bundle = bundle;
+                this.unityContainer = unityContainer;
             }
 
             protected IJob RunningJob { get; private set; }
-
-
+            
             /// <summary>
             ///     Called by the <see cref="T:Quartz.IScheduler" /> when a <see cref="T:Quartz.ITrigger" />
             ///     fires that is associated with the <see cref="T:Quartz.IJob" />.
@@ -114,17 +119,17 @@ namespace Quartz.Unity
             /// <exception cref="SchedulerConfigException">Job cannot be instantiated.</exception>
             public void Execute(IJobExecutionContext context)
             {
-                var childContainer = _unityContainer.CreateChildContainer();
+                var childContainer = unityContainer.CreateChildContainer();
                 try
                 {
-                    RunningJob = (IJob)childContainer.Resolve(_bundle.JobDetail.JobType);
+                    RunningJob = (IJob)childContainer.Resolve(bundle.JobDetail.JobType);
                     RunningJob.Execute(context);
                 }
                 catch (Exception ex)
                 {
                     throw new SchedulerConfigException(string.Format(CultureInfo.InvariantCulture,
                         "Failed to instantiate Job '{0}' of type '{1}'",
-                        _bundle.JobDetail.Key, _bundle.JobDetail.JobType), ex);
+                        bundle.JobDetail.Key, bundle.JobDetail.JobType), ex);
                 }
                 finally
                 {
@@ -133,8 +138,7 @@ namespace Quartz.Unity
                 }
             }
         }
-
-
+        
         internal sealed class InterruptableJobWrapper : JobWrapper, IInterruptableJob
         {
             public InterruptableJobWrapper(TriggerFiredBundle bundle, IUnityContainer unityContainer)
@@ -145,6 +149,7 @@ namespace Quartz.Unity
             public void Interrupt()
             {
                 var interruptableJob = RunningJob as IInterruptableJob;
+                
                 if (interruptableJob != null)
                 {
                     interruptableJob.Interrupt();
