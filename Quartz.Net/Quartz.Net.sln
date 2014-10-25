@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Unity.40", "Quartz.Unity.40\Quartz.Unity.40.csproj", "{A3412AE3-7F5B-4B15-9642-397BB78E5D6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Unity.45", "Quartz.Unity.45\Quartz.Unity.45.csproj", "{5E7B59F1-A8F9-41DD-A582-C55A2CF33E3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{B563DAD6-6283-4F83-9184-9A43E2FFDFF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1EE6699-C8E8-42AF-8965-2C1F0476BD1B}"
+	ProjectSection(SolutionItems) = preProject
+		Quartz.Unity.snk = Quartz.Unity.snk
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
