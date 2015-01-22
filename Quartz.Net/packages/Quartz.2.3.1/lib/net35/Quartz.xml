@@ -2362,143 +2362,20 @@
             settingName=settingValue|otherSettingName=otherSettingValue|...
             </remarks>
         </member>
-        <member name="T:Quartz.Impl.AdoJobStore.FiredTriggerRecord">
+        <member name="T:Quartz.Impl.AdoJobStore.FirebirdDelegate">
             <summary>
-            Conveys the state of a fired-trigger record.
+            Delegate implementation for Firebird.
             </summary>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.StdAdoDelegate">
+            <summary>
+            This is meant to be an abstract base class for most, if not all, <see cref="T:Quartz.Impl.AdoJobStore.IDriverDelegate"/>
+            implementations. Subclasses should override only those methods that need
+            special handling for the DBMS driver in question.
+            </summary>
+            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
             <author>James House</author>
             <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireInstanceId">
-            <summary>
-            Gets or sets the fire instance id.
-            </summary>
-            <value>The fire instance id.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireTimestamp">
-            <summary>
-            Gets or sets the fire timestamp.
-            </summary>
-            <value>The fire timestamp.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.ScheduleTimestamp">
-            <summary>
-            Gets or sets the scheduled fire timestamp.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobDisallowsConcurrentExecution">
-            <summary>
-            Gets or sets a value indicating whether job disallows concurrent execution.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobKey">
-            <summary>
-            Gets or sets the job key.
-            </summary>
-            <value>The job key.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.SchedulerInstanceId">
-            <summary>
-            Gets or sets the scheduler instance id.
-            </summary>
-            <value>The scheduler instance id.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.TriggerKey">
-            <summary>
-            Gets or sets the trigger key.
-            </summary>
-            <value>The trigger key.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireInstanceState">
-            <summary>
-            Gets or sets the state of the fire instance.
-            </summary>
-            <value>The state of the fire instance.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobRequestsRecovery">
-            <summary>
-            Gets or sets a value indicating whether [job requests recovery].
-            </summary>
-            <value><c>true</c> if [job requests recovery]; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.Priority">
-            <summary>
-            Gets or sets the priority.
-            </summary>
-            <value>The priority.</value>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.IDbAccessor">
-            <summary>
-            Service interface or modifying <see cref="T:System.Data.IDbCommand"/> parameters 
-            and resultset values.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.PrepareCommand(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.String)">
-            <summary>
-            Prepares a <see cref="T:System.Data.IDbCommand"/> to be used to access database.
-            </summary>
-            <param name="cth">Connection and tranasction pair</param>
-            <param name="commandText">SQL to run</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.AddCommandParameter(System.Data.IDbCommand,System.String,System.Object)">
-            <summary>
-            Adds a parameter to <see cref="T:System.Data.IDbCommand"/>.
-            </summary>
-            <param name="cmd">Command to add parameter to</param>
-            <param name="paramName">Parameter's name</param>
-            <param name="paramValue">Parameter's value</param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.AddCommandParameter(System.Data.IDbCommand,System.String,System.Object,System.Enum)">
-            <summary>
-            Adds a parameter to <see cref="T:System.Data.IDbCommand"/>.
-            </summary>
-            <param name="cmd">Command to add parameter to</param>
-            <param name="paramName">Parameter's name</param>
-            <param name="paramValue">Parameter's value</param>
-            <param name="dataType">Parameter's data type</param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbBooleanValue(System.Boolean)">
-            <summary>
-            Gets the db presentation for boolean value. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="booleanValue">Value to map to database.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetBooleanFromDbValue(System.Object)">
-            <summary>
-            Gets the boolean value from db presentation. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="columnValue">Value to map from database.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbDateTimeValue(System.Nullable{System.DateTimeOffset})">
-            <summary>
-            Gets the db presentation for date/time value. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="dateTimeValue">Value to map to database.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDateTimeFromDbValue(System.Object)">
-            <summary>
-            Gets the date/time value from db presentation. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="columnValue">Value to map from database.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbTimeSpanValue(System.Nullable{System.TimeSpan})">
-            <summary>
-            Gets the db presentation for time span value. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="timeSpanValue">Value to map to database.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetTimeSpanFromDbValue(System.Object)">
-            <summary>
-            Gets the time span value from db presentation. Subclasses can overwrite this behaviour.
-            </summary>
-            <param name="columnValue">Value to map from database.</param>
-            <returns></returns>
         </member>
         <member name="T:Quartz.Impl.AdoJobStore.IDriverDelegate">
             <summary>
@@ -3197,1595 +3074,78 @@
             </summary>
             <param name="conn"></param>
         </member>
-        <member name="T:Quartz.Impl.AdoJobStore.InvalidConfigurationException">
+        <member name="T:Quartz.Impl.AdoJobStore.IDbAccessor">
             <summary>
-            Exception class for when a driver delegate cannot be found for a given
-            configuration, or lack thereof.
+            Service interface or modifying <see cref="T:System.Data.IDbCommand"/> parameters 
+            and resultset values.
             </summary>
-            <author>  <a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
-            <author>Marko Lahma (.NET)</author>
         </member>
-        <member name="T:Quartz.SchedulerException">
-            <summary> 
-            Base class for exceptions thrown by the Quartz <see cref="T:Quartz.IScheduler"/>.
-            </summary>
-            <remarks>
-            SchedulerExceptions may contain a reference to another
-            <see cref="T:System.Exception"/>, which was the underlying cause of the SchedulerException.
-            </remarks>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="M:Quartz.SchedulerException.#ctor">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.PrepareCommand(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            Prepares a <see cref="T:System.Data.IDbCommand"/> to be used to access database.
             </summary>
-        </member>
-        <member name="M:Quartz.SchedulerException.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
-            </summary>
-            <param name="msg">The MSG.</param>
-        </member>
-        <member name="M:Quartz.SchedulerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
-            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
-        </member>
-        <member name="M:Quartz.SchedulerException.#ctor(System.Exception)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
-            </summary>
-            <param name="cause">The cause.</param>
-        </member>
-        <member name="M:Quartz.SchedulerException.#ctor(System.String,System.Exception)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
-            </summary>
-            <param name="msg">The MSG.</param>
-            <param name="cause">The cause.</param>
-        </member>
-        <member name="M:Quartz.SchedulerException.ToString">
-            <summary>
-            Creates and returns a string representation of the current exception.
-            </summary>
-            <returns>
-            A string representation of the current exception.
-            </returns>
-            <PermissionSet><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*"/></PermissionSet>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.InvalidConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.InvalidConfigurationException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
-            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.JobStoreCMT">
-            <summary>
-             <see cref="T:Quartz.Impl.AdoJobStore.JobStoreCMT"/> is meant to be used in an application-server
-             or other software framework environment that provides 
-             container-managed-transactions. No commit / rollback will be handled by this class.
-             </summary>
-             <remarks>
-             If you need commit / rollback, use <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>
-             instead.
-             </remarks>
-             <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
-             <author>James House</author>
-             <author>Srinivas Venkatarangaiah</author>
-             <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.JobStoreSupport">
-            <summary>
-            Contains base functionality for ADO.NET-based JobStore implementations.
-            </summary>
-            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="T:Quartz.Spi.IJobStore">
-            <summary> 
-            The interface to be implemented by classes that want to provide a <see cref="T:Quartz.IJob"/>
-            and <see cref="T:Quartz.ITrigger"/> storage mechanism for the
-            <see cref="T:Quartz.Core.QuartzScheduler"/>'s use.
-            </summary>
-            <remarks>
-            Storage of <see cref="T:Quartz.IJob"/> s and <see cref="T:Quartz.ITrigger"/> s should be keyed
-            on the combination of their name and group for uniqueness.
-            </remarks>
-            <seealso cref="T:Quartz.Core.QuartzScheduler"/>
-            <seealso cref="T:Quartz.ITrigger"/>
-            <seealso cref="T:Quartz.IJob"/>
-            <seealso cref="T:Quartz.IJobDetail"/>
-            <seealso cref="T:Quartz.JobDataMap"/>
-            <seealso cref="T:Quartz.ICalendar"/>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
-            <summary>
-            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
-            used, in order to give the it a chance to Initialize.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.SchedulerStarted">
-            <summary>
-            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
-            the scheduler has started.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.SchedulerPaused">
-            <summary>
-            Called by the QuartzScheduler to inform the JobStore that
-            the scheduler has been paused.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.SchedulerResumed">
-            <summary>
-            Called by the QuartzScheduler to inform the JobStore that
-            the scheduler has resumed after being paused.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.Shutdown">
-            <summary>
-            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
-            it should free up all of it's resources because the scheduler is
-            shutting down.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.StoreJobAndTrigger(Quartz.IJobDetail,Quartz.Spi.IOperableTrigger)">
-            <summary>
-            Store the given <see cref="T:Quartz.IJobDetail"/> and <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
-            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
-            <throws>  ObjectAlreadyExistsException </throws>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.IsJobGroupPaused(System.String)">
-            <summary>
-            returns true if the given JobGroup is paused
-            </summary>
-            <param name="groupName"></param>
+            <param name="cth">Connection and tranasction pair</param>
+            <param name="commandText">SQL to run</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.IsTriggerGroupPaused(System.String)">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.AddCommandParameter(System.Data.IDbCommand,System.String,System.Object)">
             <summary>
-            returns true if the given TriggerGroup
-            is paused
+            Adds a parameter to <see cref="T:System.Data.IDbCommand"/>.
             </summary>
-            <param name="groupName"></param>
+            <param name="cmd">Command to add parameter to</param>
+            <param name="paramName">Parameter's name</param>
+            <param name="paramValue">Parameter's value</param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.AddCommandParameter(System.Data.IDbCommand,System.String,System.Object,System.Enum)">
+            <summary>
+            Adds a parameter to <see cref="T:System.Data.IDbCommand"/>.
+            </summary>
+            <param name="cmd">Command to add parameter to</param>
+            <param name="paramName">Parameter's name</param>
+            <param name="paramValue">Parameter's value</param>
+            <param name="dataType">Parameter's data type</param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbBooleanValue(System.Boolean)">
+            <summary>
+            Gets the db presentation for boolean value. Subclasses can overwrite this behaviour.
+            </summary>
+            <param name="booleanValue">Value to map to database.</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.StoreJob(Quartz.IJobDetail,System.Boolean)">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetBooleanFromDbValue(System.Object)">
             <summary>
-            Store the given <see cref="T:Quartz.IJobDetail"/>.
+            Gets the boolean value from db presentation. Subclasses can overwrite this behaviour.
             </summary>
-            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
-            <param name="replaceExisting">
-            If <see langword="true"/>, any <see cref="T:Quartz.IJob"/> existing in the
-            <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group should be
-            over-written.
-            </param>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RemoveJob(Quartz.JobKey)">
-            <summary>
-            Remove (delete) the <see cref="T:Quartz.IJob"/> with the given
-            key, and any <see cref="T:Quartz.ITrigger"/> s that reference
-            it.
-            </summary>
-            <remarks>
-            If removal of the <see cref="T:Quartz.IJob"/> results in an empty group, the
-            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
-            known group names.
-            </remarks>
-            <returns>
-            	<see langword="true"/> if a <see cref="T:Quartz.IJob"/> with the given name and
-            group was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RetrieveJob(Quartz.JobKey)">
-            <summary>
-            Retrieve the <see cref="T:Quartz.IJobDetail"/> for the given
-            <see cref="T:Quartz.IJob"/>.
-            </summary>
-            <returns>
-            The desired <see cref="T:Quartz.IJob"/>, or null if there is no match.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.StoreTrigger(Quartz.Spi.IOperableTrigger,System.Boolean)">
-            <summary>
-            Store the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
-            <param name="replaceExisting">If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/> existing in
-            the <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group should
-            be over-written.</param>
-            <throws>  ObjectAlreadyExistsException </throws>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RemoveTrigger(Quartz.TriggerKey)">
-            <summary>
-            Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the given key.
-            </summary>
-            <remarks>
-            <para>
-            If removal of the <see cref="T:Quartz.ITrigger"/> results in an empty group, the
-            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
-            known group names.
-            </para>
-            <para>
-            If removal of the <see cref="T:Quartz.ITrigger"/> results in an 'orphaned' <see cref="T:Quartz.IJob"/>
-            that is not 'durable', then the <see cref="T:Quartz.IJob"/> should be deleted
-            also.
-            </para>
-            </remarks>
-            <returns>
-            	<see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
-            name and group was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)">
-            <summary>
-            Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the
-            given name, and store the new given one - which must be associated
-            with the same job.
-            </summary>
-            <param name="triggerKey">The <see cref="T:Quartz.ITrigger"/> to be replaced.</param>
-            <param name="newTrigger">The new <see cref="T:Quartz.ITrigger"/> to be stored.</param>
-            <returns>
-            	<see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
-            name and group was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RetrieveTrigger(Quartz.TriggerKey)">
-            <summary>
-            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <returns>
-            The desired <see cref="T:Quartz.ITrigger"/>, or null if there is no
-            match.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.CheckExists(Quartz.JobKey)">
-            <summary>
-            Determine whether a <see cref="T:Quartz.IJob"/> with the given identifier already
-            exists within the scheduler.
-            </summary>
-            <remarks>
-            </remarks>
-            <param name="jobKey">the identifier to check for</param>
-            <returns>true if a job exists with the given identifier</returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.CheckExists(Quartz.TriggerKey)">
-            <summary>
-            Determine whether a <see cref="T:Quartz.ITrigger"/> with the given identifier already
-            exists within the scheduler.
-            </summary>
-            <remarks>
-            </remarks>
-            <param name="triggerKey">the identifier to check for</param>
-            <returns>true if a trigger exists with the given identifier</returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ClearAllSchedulingData">
-            <summary>
-            Clear (delete!) all scheduling data - all <see cref="T:Quartz.IJob"/>s, <see cref="T:Quartz.ITrigger"/>s
-            <see cref="T:Quartz.ICalendar"/>s.
-            </summary>
-            <remarks>
-            </remarks>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.StoreCalendar(System.String,Quartz.ICalendar,System.Boolean,System.Boolean)">
-            <summary>
-            Store the given <see cref="T:Quartz.ICalendar"/>.
-            </summary>
-            <param name="name">The name.</param>
-            <param name="calendar">The <see cref="T:Quartz.ICalendar"/> to be stored.</param>
-            <param name="replaceExisting">If <see langword="true"/>, any <see cref="T:Quartz.ICalendar"/> existing
-            in the <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group
-            should be over-written.</param>
-            <param name="updateTriggers">If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/>s existing
-            in the <see cref="T:Quartz.Spi.IJobStore"/> that reference an existing
-            Calendar with the same name with have their next fire time
-            re-computed with the new <see cref="T:Quartz.ICalendar"/>.</param>
-            <throws>  ObjectAlreadyExistsException </throws>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RemoveCalendar(System.String)">
-            <summary>
-            Remove (delete) the <see cref="T:Quartz.ICalendar"/> with the
-            given name.
-            </summary>
-            <remarks>
-            If removal of the <see cref="T:Quartz.ICalendar"/> would result in
-            <see cref="T:Quartz.ITrigger"/>s pointing to non-existent calendars, then a
-            <see cref="T:Quartz.JobPersistenceException"/> will be thrown.
-            </remarks>
-            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be removed.</param>
-            <returns>
-            	<see langword="true"/> if a <see cref="T:Quartz.ICalendar"/> with the given name
-            was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.RetrieveCalendar(System.String)">
-            <summary>
-            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be retrieved.</param>
-            <returns>
-            The desired <see cref="T:Quartz.ICalendar"/>, or null if there is no
-            match.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetNumberOfJobs">
-            <summary>
-            Get the number of <see cref="T:Quartz.IJob"/>s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            </summary>
+            <param name="columnValue">Value to map from database.</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.GetNumberOfTriggers">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbDateTimeValue(System.Nullable{System.DateTimeOffset})">
             <summary>
-            Get the number of <see cref="T:Quartz.ITrigger"/>s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            Gets the db presentation for date/time value. Subclasses can overwrite this behaviour.
             </summary>
+            <param name="dateTimeValue">Value to map to database.</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.GetNumberOfCalendars">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDateTimeFromDbValue(System.Object)">
             <summary>
-            Get the number of <see cref="T:Quartz.ICalendar"/> s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            Gets the date/time value from db presentation. Subclasses can overwrite this behaviour.
             </summary>
+            <param name="columnValue">Value to map from database.</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.GetJobKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetDbTimeSpanValue(System.Nullable{System.TimeSpan})">
             <summary>
-            Get the names of all of the <see cref="T:Quartz.IJob"/> s that
-            have the given group name.
-            <para>
-            If there are no jobs in the given group name, the result should be a
-            zero-length array (not <see langword="null"/>).
-            </para>
+            Gets the db presentation for time span value. Subclasses can overwrite this behaviour.
             </summary>
-            <param name="matcher"></param>
+            <param name="timeSpanValue">Value to map to database.</param>
             <returns></returns>
         </member>
-        <member name="M:Quartz.Spi.IJobStore.GetTriggerKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+        <member name="M:Quartz.Impl.AdoJobStore.IDbAccessor.GetTimeSpanFromDbValue(System.Object)">
             <summary>
-            Get the names of all of the <see cref="T:Quartz.ITrigger"/>s
-            that have the given group name.
-            <para>
-            If there are no triggers in the given group name, the result should be a
-            zero-length array (not <see langword="null"/>).
-            </para>
+            Gets the time span value from db presentation. Subclasses can overwrite this behaviour.
             </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetJobGroupNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.IJob"/>
-            groups.
-            <para>
-            If there are no known group names, the result should be a zero-length
-            array (not <see langword="null"/>).
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetTriggerGroupNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.ITrigger"/>
-            groups.
-            <para>
-            If there are no known group names, the result should be a zero-length
-            array (not <see langword="null"/>).
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetCalendarNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.ICalendar"/> s
-            in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            
-            <para>
-            If there are no Calendars in the given group name, the result should be
-            a zero-length array (not <see langword="null"/>).
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetTriggersForJob(Quartz.JobKey)">
-            <summary>
-            Get all of the Triggers that are associated to the given Job.
-            </summary>
-            <remarks>
-            If there are no matches, a zero-length array should be returned.
-            </remarks>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetTriggerState(Quartz.TriggerKey)">
-            <summary>
-            Get the current state of the identified <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <seealso cref="T:Quartz.TriggerState"/>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.PauseTrigger(Quartz.TriggerKey)">
-            <summary>
-            Pause the <see cref="T:Quartz.ITrigger"/> with the given key.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the
-            given group.
-            </summary>
-            <remarks>
-            The JobStore should "remember" that the group is paused, and impose the
-            pause on any new triggers that are added to the group while the group is
-            paused.
-            </remarks>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.PauseJob(Quartz.JobKey)">
-            <summary>
-            Pause the <see cref="T:Quartz.IJob"/> with the given key - by
-            pausing all of its current <see cref="T:Quartz.ITrigger"/>s.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
-            <summary>
-            Pause all of the <see cref="T:Quartz.IJob"/>s in the given
-            group - by pausing all of their <see cref="T:Quartz.ITrigger"/>s.
-            <para>
-            The JobStore should "remember" that the group is paused, and impose the
-            pause on any new jobs that are added to the group while the group is
-            paused.
-            </para>
-            </summary>
-            <seealso cref="T:System.String">
-            </seealso>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ResumeTrigger(Quartz.TriggerKey)">
-            <summary>
-            Resume (un-pause) the <see cref="T:Quartz.ITrigger"/> with the
-            given key.
-            
-            <para>
-            If the <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </para>
-            </summary>
-            <seealso cref="T:System.String">
-            </seealso>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Resume (un-pause) all of the <see cref="T:Quartz.ITrigger"/>s
-            in the given group.
-            <para>
-            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.GetPausedTriggerGroups">
-            <summary>
-            Gets the paused trigger groups.
-            </summary>
+            <param name="columnValue">Value to map from database.</param>
             <returns></returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ResumeJob(Quartz.JobKey)">
-            <summary> 
-            Resume (un-pause) the <see cref="T:Quartz.IJob"/> with the
-            given key.
-            <para>
-            If any of the <see cref="T:Quartz.IJob"/>'s<see cref="T:Quartz.ITrigger"/> s missed one
-            or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s misfire
-            instruction will be applied.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
-            <summary>
-            Resume (un-pause) all of the <see cref="T:Quartz.IJob"/>s in
-            the given group.
-            <para>
-            If any of the <see cref="T:Quartz.IJob"/> s had <see cref="T:Quartz.ITrigger"/> s that
-            missed one or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s
-            misfire instruction will be applied.
-            </para> 
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.PauseAll">
-            <summary>
-            Pause all triggers - equivalent of calling <see cref="M:Quartz.Spi.IJobStore.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-            on every group.
-            <para>
-            When <see cref="M:Quartz.Spi.IJobStore.ResumeAll"/> is called (to un-pause), trigger misfire
-            instructions WILL be applied.
-            </para>
-            </summary>
-            <seealso cref="M:Quartz.Spi.IJobStore.ResumeAll"/>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ResumeAll">
-            <summary>
-            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Spi.IJobStore.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-            on every group.
-            <para>
-            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </para>
-            
-            </summary>
-            <seealso cref="M:Quartz.Spi.IJobStore.PauseAll"/>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.AcquireNextTriggers(System.DateTimeOffset,System.Int32,System.TimeSpan)">
-            <summary>
-            Get a handle to the next trigger to be fired, and mark it as 'reserved'
-            by the calling scheduler.
-            </summary>
-            <param name="noLaterThan">If &gt; 0, the JobStore should only return a Trigger
-            that will fire no later than the time represented in this value as
-            milliseconds.</param>
-            <param name="maxCount"></param>
-            <param name="timeWindow"></param>
-            <returns></returns>
-            <seealso cref="T:Quartz.ITrigger">
-            </seealso>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)">
-            <summary> 
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler no longer plans to
-            fire the given <see cref="T:Quartz.ITrigger"/>, that it had previously acquired
-            (reserved).
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.TriggersFired(System.Collections.Generic.IList{Quartz.Spi.IOperableTrigger})">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler is now firing the
-            given <see cref="T:Quartz.ITrigger"/> (executing its associated <see cref="T:Quartz.IJob"/>),
-            that it had previously acquired (reserved).
-            </summary>
-            <returns>
-            May return null if all the triggers or their calendars no longer exist, or
-            if the trigger was not successfully put into the 'executing'
-            state.  Preference is to return an empty list if none of the triggers
-            could be fired.
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.IJobStore.TriggeredJobComplete(Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,Quartz.SchedulerInstruction)">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler has completed the
-            firing of the given <see cref="T:Quartz.ITrigger"/> (and the execution its
-            associated <see cref="T:Quartz.IJob"/>), and that the <see cref="T:Quartz.JobDataMap"/>
-            in the given <see cref="T:Quartz.IJobDetail"/> should be updated if the <see cref="T:Quartz.IJob"/>
-            is stateful.
-            </summary>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.SupportsPersistence">
-            <summary>
-            Indicates whether job store supports persistence.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.EstimatedTimeToReleaseAndAcquireTrigger">
-            <summary>
-            How long (in milliseconds) the <see cref="T:Quartz.Spi.IJobStore"/> implementation 
-            estimates that it will take to release a trigger and acquire a new one. 
-            </summary>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.Clustered">
-            <summary>
-            Whether or not the <see cref="T:Quartz.Spi.IJobStore"/> implementation is clustered.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.InstanceId">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> of the Scheduler instance's Id, 
-            prior to initialize being invoked.
-            </summary>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.InstanceName">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> of the Scheduler instance's name, 
-            prior to initialize being invoked.
-            </summary>
-        </member>
-        <member name="P:Quartz.Spi.IJobStore.ThreadPoolSize">
-            <summary>
-            Tells the JobStore the pool size used to execute jobs.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport"/> class.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection">
-            <summary>
-            Gets the connection and starts a new transaction.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
-            <summary>
-            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
-            used, in order to give it a chance to Initialize.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerStarted">
-            <seealso cref="M:Quartz.Spi.IJobStore.SchedulerStarted"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerPaused">
-            <summary>
-            Called by the QuartzScheduler to inform the JobStore that
-            the scheduler has been paused.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerResumed">
-            <summary>
-            Called by the QuartzScheduler to inform the JobStore that
-            the scheduler has resumed after being paused.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.Shutdown">
-            <summary>
-            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
-            it should free up all of it's resources because the scheduler is
-            shutting down.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverJobs">
-            <summary>
-            Will recover any failed or misfired jobs and clean up the data store as
-            appropriate.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverJobs(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Will recover any failed or misfired jobs and clean up the data store as
-            appropriate.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJobAndTrigger(Quartz.IJobDetail,Quartz.Spi.IOperableTrigger)">
-            <summary>
-            Store the given <see cref="T:Quartz.IJobDetail"/> and <see cref="T:Quartz.Spi.IOperableTrigger"/>.
-            </summary>
-            <param name="newJob">Job to be stored.</param>
-            <param name="newTrigger">Trigger to be stored.</param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.IsJobGroupPaused(System.String)">
-            <summary>
-            returns true if the given JobGroup
-            is paused
-            </summary>
-            <param name="groupName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.IsTriggerGroupPaused(System.String)">
-            <summary>
-            returns true if the given TriggerGroup
-            is paused
-            </summary>
-            <param name="groupName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJob(Quartz.IJobDetail,System.Boolean)">
-            <summary>
-            Stores the given <see cref="T:Quartz.IJobDetail"/>.
-            </summary>
-            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
-            <param name="replaceExisting">
-            If <see langword="true"/>, any <see cref="T:Quartz.IJob"/> existing in the
-            <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group should be over-written.
-            </param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.IJobDetail,System.Boolean)">
-            <summary> <para>
-            Insert or update a job.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.JobExists(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey)">
-            <summary>
-            Check existence of a given job.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreTrigger(Quartz.Spi.IOperableTrigger,System.Boolean)">
-            <summary>
-            Store the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
-            <param name="replaceExisting">
-            If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/> existing in
-            the <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group should
-            be over-written.
-            </param>
-            <exception cref="T:Quartz.ObjectAlreadyExistsException">
-            if a <see cref="T:Quartz.ITrigger"/> with the same name/group already
-            exists, and replaceExisting is set to false.
-            </exception>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,System.Boolean,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Insert or update a trigger.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.TriggerExists(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
-            <summary>
-            Check existence of a given trigger.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.JobKey)">
-            <summary>
-            Remove (delete) the <see cref="T:Quartz.IJob"/> with the given
-            name, and any <see cref="T:Quartz.ITrigger"/> s that reference
-            it.
-            </summary>
-            
-            <remarks>
-            If removal of the <see cref="T:Quartz.IJob"/> results in an empty group, the
-            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
-            known group names.
-            </remarks>
-            <returns>
-            <see langword="true"/> if a <see cref="T:Quartz.IJob"/> with the given name &amp;
-            group was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.DeleteJobAndChildren(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey)">
-            <summary>
-            Delete a job and its listeners.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.Boolean)"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.IJobDetail)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.DeleteTriggerAndChildren(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
-            <summary>
-            Delete a trigger, its listeners, and its Simple/Cron/BLOB sub-table entry.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.Boolean)"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.IJobDetail)"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReplaceTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveJob(Quartz.JobKey)">
-            <summary>
-            Retrieve the <see cref="T:Quartz.IJobDetail"/> for the given
-            <see cref="T:Quartz.IJob"/>.
-            </summary>
-            <param name="jobKey">The key identifying the job.</param>
-            <returns>The desired <see cref="T:Quartz.IJob"/>, or null if there is no match.</returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.TriggerKey)">
-             <summary>
-             Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the
-             given name.
-             </summary>
-             
-             <remarks>
-             <para>
-             If removal of the <see cref="T:Quartz.ITrigger"/> results in an empty group, the
-             group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
-             known group names.
-             </para>
-             
-             <para>
-             If removal of the <see cref="T:Quartz.ITrigger"/> results in an 'orphaned' <see cref="T:Quartz.IJob"/>
-             that is not 'durable', then the <see cref="T:Quartz.IJob"/> should be deleted
-             also.
-             </para>
-             </remarks>
-             <param name="triggerKey">The key identifying the trigger.</param>
-             <returns>
-             <see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
-             name &amp; group was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)">
-            <see cref="M:Quartz.Spi.IJobStore.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveTrigger(Quartz.TriggerKey)">
-            <summary>
-            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="triggerKey">The key identifying the trigger.</param>
-            <returns>The desired <see cref="T:Quartz.ITrigger"/>, or null if there is no match.</returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerState(Quartz.TriggerKey)">
-            <summary>
-            Get the current state of the identified <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <seealso cref="F:Quartz.TriggerState.Normal"/>
-            <seealso cref="F:Quartz.TriggerState.Paused"/>
-            <seealso cref="F:Quartz.TriggerState.Complete"/>
-            <seealso cref="F:Quartz.TriggerState.Error"/>
-            <seealso cref="F:Quartz.TriggerState.None"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerState(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
-            <summary>
-            Gets the state of the trigger.
-            </summary>
-            <param name="conn">The conn.</param>
-            <param name="triggerKey">The key identifying the trigger.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreCalendar(System.String,Quartz.ICalendar,System.Boolean,System.Boolean)">
-            <summary>
-            Store the given <see cref="T:Quartz.ICalendar"/>.
-            </summary>
-            <param name="calName">The name of the calendar.</param>
-            <param name="calendar">The <see cref="T:Quartz.ICalendar"/> to be stored.</param>
-            <param name="replaceExisting">
-            If <see langword="true"/>, any <see cref="T:Quartz.ICalendar"/> existing
-            in the <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group
-            should be over-written.
-            </param>
-            <param name="updateTriggers"></param>
-            <exception cref="T:Quartz.ObjectAlreadyExistsException">
-                      if a <see cref="T:Quartz.ICalendar"/> with the same name already
-                      exists, and replaceExisting is set to false.
-            </exception>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveCalendar(System.String)">
-             <summary>
-             Remove (delete) the <see cref="T:Quartz.ICalendar"/> with the given name.
-             </summary>
-             <remarks>
-             If removal of the <see cref="T:Quartz.ICalendar"/> would result in
-             <see cref="T:Quartz.ITrigger"/>s pointing to non-existent calendars, then a
-             <see cref="T:Quartz.JobPersistenceException"/> will be thrown.
-             </remarks>
-             <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be removed.</param>
-             <returns>
-             <see langword="true"/> if a <see cref="T:Quartz.ICalendar"/> with the given name
-             was found and removed from the store.
-            </returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveCalendar(System.String)">
-            <summary>
-            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
-            </summary>
-            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be retrieved.</param>
-            <returns>The desired <see cref="T:Quartz.ICalendar"/>, or null if there is no match.</returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfJobs">
-            <summary>
-            Get the number of <see cref="T:Quartz.IJob"/> s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfTriggers">
-            <summary>
-            Get the number of <see cref="T:Quartz.ITrigger"/> s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfCalendars">
-            <summary>
-            Get the number of <see cref="T:Quartz.ICalendar"/> s that are
-            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetJobKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.IJob"/> s that
-            have the given group name.
-            </summary>
-            <remarks>
-            If there are no jobs in the given group name, the result should be a
-            zero-length array (not <see langword="null"/>).
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckExists(Quartz.JobKey)">
-            <summary>
-            Determine whether a <see cref="T:Quartz.IJob"/> with the given identifier already
-            exists within the scheduler.
-            </summary>
-            <remarks>
-            </remarks>
-            <param name="jobKey">the identifier to check for</param>
-            <returns>true if a Job exists with the given identifier</returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckExists(Quartz.TriggerKey)">
-            <summary>
-            Determine whether a <see cref="T:Quartz.ITrigger"/> with the given identifier already
-            exists within the scheduler.
-            </summary>
-            <remarks>
-            </remarks>
-            <param name="triggerKey">the identifier to check for</param>
-            <returns>true if a Trigger exists with the given identifier</returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ClearAllSchedulingData">
-            <summary>
-            Clear (delete!) all scheduling data - all <see cref="T:Quartz.IJob"/>s, <see cref="T:Quartz.ITrigger"/>s
-            <see cref="T:Quartz.ICalendar"/>s.
-            </summary>
-            <remarks>
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.ITrigger"/> s
-            that have the given group name.
-            </summary>
-            <remarks>
-            If there are no triggers in the given group name, the result should be a
-            zero-length array (not <see langword="null"/>).
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetJobGroupNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.IJob"/>
-            groups.
-            </summary>
-            
-            <remarks>
-            If there are no known group names, the result should be a zero-length
-            array (not <see langword="null"/>).
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerGroupNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.ITrigger"/>
-            groups.
-            </summary>
-            
-            <remarks>
-            If there are no known group names, the result should be a zero-length
-            array (not <see langword="null"/>).
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetCalendarNames">
-            <summary>
-            Get the names of all of the <see cref="T:Quartz.ICalendar"/> s
-            in the <see cref="T:Quartz.Spi.IJobStore"/>.
-            </summary>
-            <remarks>
-            If there are no Calendars in the given group name, the result should be
-            a zero-length array (not <see langword="null"/>).
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggersForJob(Quartz.JobKey)">
-            <summary>
-            Get all of the Triggers that are associated to the given Job.
-            </summary>
-            <remarks>
-            If there are no matches, a zero-length array should be returned.
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTrigger(Quartz.TriggerKey)">
-            <summary>
-            Pause the <see cref="T:Quartz.ITrigger"/> with the given name.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
-            <summary>
-            Pause the <see cref="T:Quartz.ITrigger"/> with the given name.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJob(Quartz.JobKey)">
-            <summary>
-            Pause the <see cref="T:Quartz.IJob"/> with the given name - by
-            pausing all of its current <see cref="T:Quartz.ITrigger"/>s.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJob(Quartz.JobKey)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
-            <summary>
-            Pause all of the <see cref="T:Quartz.IJob"/>s in the given
-            group - by pausing all of their <see cref="T:Quartz.ITrigger"/>s.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckBlockedState(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.String)">
-            <summary>
-            Determines if a Trigger for the given job should be blocked.  
-            State can only transition to StatePausedBlocked/StateBlocked from 
-            StatePaused/StateWaiting respectively.
-            </summary>
-            <returns>StatePausedBlocked, StateBlocked, or the currentState. </returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
-            <summary>
-            Resume (un-pause) the <see cref="T:Quartz.ITrigger"/> with the
-            given name.
-            </summary>
-            <remarks>
-            If the <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJob(Quartz.JobKey)">
-            <summary>
-            Resume (un-pause) the <see cref="T:Quartz.IJob"/> with the
-            given name.
-            </summary>
-            <remarks>
-            If any of the <see cref="T:Quartz.IJob"/>'s <see cref="T:Quartz.ITrigger"/> s missed one
-            or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s misfire
-            instruction will be applied.
-            </remarks>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJob(Quartz.JobKey)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
-            <summary>
-            Resume (un-pause) all of the <see cref="T:Quartz.IJob"/>s in
-            the given group.
-            </summary>
-            <remarks>
-            If any of the <see cref="T:Quartz.IJob"/> s had <see cref="T:Quartz.ITrigger"/> s that
-            missed one or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s
-            misfire instruction will be applied.
-            </remarks>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the given group.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggerGroup(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the given group.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetPausedTriggerGroups(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary> 
-            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the
-            given group.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
-            <summary>
-            Resume (un-pause) all of the <see cref="T:Quartz.ITrigger"/>s
-            in the given group.
-            <para>
-            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Pause all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-            on every group.
-            <para>
-            When <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll"/> is called (to un-pause), trigger misfire
-            instructions WILL be applied.
-            </para>
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll"/>
-            <seealso cref="T:System.String"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll">
-            <summary>
-            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-            on every group.
-            </summary>
-            <remarks>
-            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </remarks>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
-            on every group.
-            <para>
-            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
-            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
-            </para>
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.AcquireNextTriggers(System.DateTimeOffset,System.Int32,System.TimeSpan)">
-            <summary>
-            Get a handle to the next N triggers to be fired, and mark them as 'reserved'
-            by the calling scheduler.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler no longer plans to
-            fire the given <see cref="T:Quartz.ITrigger"/>, that it had previously acquired
-            (reserved).
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.TriggeredJobComplete(Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,Quartz.SchedulerInstruction)">
-            <summary>
-            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler has completed the
-            firing of the given <see cref="T:Quartz.ITrigger"/> (and the execution its
-            associated <see cref="T:Quartz.IJob"/>), and that the <see cref="T:Quartz.JobDataMap"/>
-            in the given <see cref="T:Quartz.IJobDetail"/> should be updated if the <see cref="T:Quartz.IJob"/>
-            is stateful.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.FindFailedInstances(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Get a list of all scheduler instances in the cluster that may have failed.
-            This includes this scheduler if it is checking in for the first time.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.FindOrphanedFailedInstances(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.Collections.Generic.IList{Quartz.Impl.AdoJobStore.SchedulerStateRecord})">
-            <summary>
-            Create dummy <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/> objects for fired triggers
-            that have no scheduler state record.  Checkin timestamp and interval are
-            left as zero on these dummy <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/> objects.
-            </summary>
-            <param name="conn"></param>
-            <param name="schedulerStateRecords">List of all current <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/>s</param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CleanupConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Cleanup the given database connection.  This means restoring
-            any modified auto commit or transaction isolation connection
-            attributes, and then closing the underlying connection.
-            </summary>
-            
-            <remarks>
-            This is separate from closeConnection() because the Spring 
-            integration relies on being able to overload closeConnection() and
-            expects the same connection back that it originally returned
-            from the datasource. 
-            </remarks>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CloseConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CloseConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary> 
-            Closes the supplied connection.
-            </summary>
-            <param name="cth">(Optional)</param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RollbackConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
-            <summary>
-            Rollback the supplied connection.
-            </summary>
-            <param name="cth">(Optional)
-            </param>
-            <throws>  JobPersistenceException thrown if a SQLException occurs when the </throws>
-            <summary> connection is rolled back
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CommitConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.Boolean)">
-            <summary>
-            Commit the supplied connection.
-            </summary>
-            <param name="cth">The CTH.</param>
-            <param name="openNewTransaction">if set to <c>true</c> opens a new transaction.</param>
-            <throws>JobPersistenceException thrown if a SQLException occurs when the </throws>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteWithoutLock``1(System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
-            <summary>
-            Execute the given callback in a transaction. Depending on the JobStore, 
-            the surrounding transaction may be assumed to be already present 
-            (managed).  
-            </summary>
-            <remarks>
-            This method just forwards to ExecuteInLock() with a null lockName.
-            </remarks>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
-            <summary>
-            Execute the given callback having acquired the given lock.  
-            Depending on the JobStore, the surrounding transaction may be 
-            assumed to be already present (managed).
-            </summary> 
-            <param name="lockName">
-            The name of the lock to acquire, for example 
-            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
-            lockCallback is still executed in a transaction. 
-            </param>
-            <param name="txCallback">
-            The callback to excute after having acquired the given lock.
-            </param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0},System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0,System.Boolean})">
-            <summary>
-            Execute the given callback having optionally acquired the given lock.
-            This uses the non-managed transaction connection.
-            </summary>
-            <param name="lockName">
-            The name of the lock to acquire, for example 
-            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
-            lockCallback is still executed in a non-managed transaction. 
-            </param>
-            <param name="txCallback">
-            The callback to excute after having acquired the given lock.
-            </param>
-            <param name="txValidator"></param>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DataSource">
-            <summary> 
-            Get or set the datasource name.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.ConnectionManager">
-            <summary> 
-            Get or set the database connection manager.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Log">
-            <summary>
-            Gets the log.
-            </summary>
-            <value>The log.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.TablePrefix">
-            <summary> 
-            Get or sets the prefix that should be pre-pended to all table names.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.UseProperties">
-            <summary>
-            Set whether string-only properties will be handled in JobDataMaps.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.InstanceId">
-            <summary>
-            Get or set the instance Id of the Scheduler (must be unique within a cluster).
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.InstanceName">
-            <summary>
-            Get or set the instance Id of the Scheduler (must be unique within this server instance).
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Clustered">
-            <summary> 
-            Get or set whether this instance is part of a cluster.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.ClusterCheckinInterval">
-            <summary>
-            Get or set the frequency at which this instance "checks-in"
-            with the other instances of the cluster. -- Affects the rate of
-            detecting failed instances.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MaxMisfiresToHandleAtATime">
-            <summary>
-            Get or set the maximum number of misfired triggers that the misfire handling
-            thread will try to recover at one time (within one transaction).  The
-            default is 20.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DbRetryInterval">
-            <summary>
-            Gets or sets the database retry interval.
-            </summary>
-            <value>The db retry interval.</value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.UseDBLocks">
-            <summary>
-            Get or set whether this instance should use database-based thread
-            synchronization.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.LockOnInsert">
-            <summary> 
-            Whether or not to obtain locks when inserting new jobs/triggers.  
-            </summary>
-            <remarks>
-            <para>
-            Defaults to <see langword="true" />, which is safest - some db's (such as 
-            MS SQLServer) seem to require this to avoid deadlocks under high load,
-            while others seem to do fine without.  Settings this to false means 
-            isolation guarantees between job scheduling and trigger acquisition are
-            entirely enforced by the database.  Depending on the database and it's
-            configuration this may cause unusual scheduling behaviors.
-            </para>
-            <para>
-            Setting this property to <see langword="false" /> will provide a 
-            significant performance increase during the addition of new jobs 
-            and triggers.
-            </para>
-            </remarks>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MisfireThreshold">
-            <summary> 
-            The time span by which a trigger must have missed its
-            next-fire-time, in order for it to be considered "misfired" and thus
-            have its misfire instruction applied.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DontSetAutoCommitFalse">
-            <summary> 
-            Don't call set autocommit(false) on connections obtained from the
-            DataSource. This can be helpfull in a few situations, such as if you
-            have a driver that complains if it is called when it is already off.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.TxIsolationLevelSerializable">
-            <summary> 
-            Set the transaction isolation level of DB connections to sequential.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.AcquireTriggersWithinLock">
-            <summary>
-            Whether or not the query and update to acquire a Trigger for firing
-            should be performed after obtaining an explicit DB lock (to avoid 
-            possible race conditions on the trigger's db row).  This is
-            is considered unnecessary for most databases (due to the nature of
-             the SQL update that is performed), and therefore a superfluous performance hit.
-            </summary>
-            <remarks>
-            However, if batch acquisition is used, it is important for this behavior 
-            to be used for all dbs.
-            </remarks>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DriverDelegateType">
-            <summary> 
-            Get or set the ADO.NET driver delegate class name.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DriverDelegateInitString">
-            <summary>
-            The driver delegate's initialization string.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.SelectWithLockSQL">
-            <summary>
-            set the SQL statement to use to select and lock a row in the "locks"
-            table.
-            </summary>
-            <seealso cref="T:Quartz.Impl.AdoJobStore.StdRowLockSemaphore"/>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MakeThreadsDaemons">
-            <summary>
-            Get whether the threads spawned by this JobStore should be
-            marked as daemon.  Possible threads include the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.MisfireHandler"/> 
-            and the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.ClusterManager"/>.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DoubleCheckLockMisfireHandler">
-            <summary>
-            Get whether to check to see if there are Triggers that have misfired
-            before actually acquiring the lock to recover them.  This should be 
-            set to false if the majority of the time, there are are misfired
-            Triggers.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Delegate">
-            <summary>
-            Get the driver delegate for DB operations.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.CanUseProperties">
-            <summary>
-            Get whether String-only properties will be handled in JobDataMaps.
-            </summary>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.SupportsPersistence">
-            <summary>
-            Indicates whether this job store supports persistence.
-            </summary>
-            <value></value>
-            <returns></returns>
-        </member>
-        <member name="T:Quartz.Spi.ITypeLoadHelper">
-            <summary> 
-            An interface for classes wishing to provide the service of loading classes
-            and resources within the scheduler...
-            </summary>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="M:Quartz.Spi.ITypeLoadHelper.Initialize">
-            <summary> 
-            Called to give the ClassLoadHelper a chance to Initialize itself,
-            including the oportunity to "steal" the class loader off of the calling
-            thread, which is the thread that is initializing Quartz.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.ITypeLoadHelper.LoadType(System.String)">
-            <summary> 
-            Return the class with the given name.
-            </summary>
-        </member>
-        <member name="M:Quartz.Spi.ITypeLoadHelper.GetResource(System.String)">
-            <summary> 
-            Finds a resource with a given name. This method returns null if no
-            resource with this name is found.
-            </summary>
-            <param name="name">name of the desired resource
-            </param>
-            <returns> a java.net.URL object
-            </returns>
-        </member>
-        <member name="M:Quartz.Spi.ITypeLoadHelper.GetResourceAsStream(System.String)">
-            <summary> 
-            Finds a resource with a given name. This method returns null if no
-            resource with this name is found.
-            </summary>
-            <param name="name">name of the desired resource
-            </param>
-            <returns> a java.io.InputStream object
-            </returns>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult">
-            <summary>
-            Helper class for returning the composite result of trying
-            to recover misfired jobs.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.#ctor(System.Boolean,System.Int32,System.DateTimeOffset)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult"/> class.
-            </summary>
-            <param name="hasMoreMisfiredTriggers">if set to <c>true</c> [has more misfired triggers].</param>
-            <param name="processedMisfiredTriggerCount">The processed misfired trigger count.</param>
-            <param name="earliestNewTimeUtc"></param>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.HasMoreMisfiredTriggers">
-            <summary>
-            Gets a value indicating whether this instance has more misfired triggers.
-            </summary>
-            <value>
-            	<c>true</c> if this instance has more misfired triggers; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.ProcessedMisfiredTriggerCount">
-            <summary>
-            Gets the processed misfired trigger count.
-            </summary>
-            <value>The processed misfired trigger count.</value>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
-            <summary>
-            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
-            used, in order to give the it a chance to Initialize.
-            </summary>
-            <param name="loadHelper"></param>
-            <param name="signaler"></param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.Shutdown">
-            <summary>
-            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
-            it should free up all of it's resources because the scheduler is
-            shutting down.
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.GetNonManagedTXConnection">
-            <summary>
-            Gets the non managed TX connection.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
-            <summary>
-            Execute the given callback having optionally acquired the given lock.  
-            Because CMT assumes that the connection is already part of a managed
-            transaction, it does not attempt to commit or rollback the 
-            enclosing transaction.
-            </summary>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreTX.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNonManagedTXConnection"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
-            <param name="lockName">
-            The name of the lock to acquire, for example 
-            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
-            txCallback is still executed in a transaction.
-            </param>
-            <param name="txCallback">Callback to execute.</param>
-        </member>
-        <member name="P:Quartz.Impl.AdoJobStore.JobStoreCMT.OpenConnection">
-            <summary>
-            Instructs this job store whether connections should be automatically opened.
-            </summary>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.JobStoreTX">
-            <summary>
-            <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/> is meant to be used in a standalone environment.
-            Both commit and rollback will be handled by this class.
-            </summary>
-            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
-            <summary>
-            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
-            used, in order to give the it a chance to Initialize.
-            </summary>
-            <param name="loadHelper"></param>
-            <param name="signaler"></param>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.GetNonManagedTXConnection">
-            <summary>
-            For <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>, the non-managed TX connection is just 
-            the normal connection because it is not CMT.
-            </summary> 
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
-            <summary>
-            Execute the given callback having optionally aquired the given lock.
-            For <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>, because it manages its own transactions
-            and only has the one datasource, this is the same behavior as 
-            <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>.
-            </summary>
-            <param name="lockName">
-            The name of the lock to aquire, for example "TRIGGER_ACCESS". 
-            If null, then no lock is aquired, but the lockCallback is still
-            executed in a transaction.
-            </param>
-            <param name="txCallback">Callback to execute.</param>
-            <returns></returns>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>
-            <sssseealso crsef="JobStoreCMT.ExecuteInLock(string, ITransactionCallback)"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNonManagedTXConnection"/>
-            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.LockException">
-            <summary>
-            Exception class for when there is a failure obtaining or releasing a
-            resource lock.
-            </summary>
-            <seealso cref="T:Quartz.Impl.AdoJobStore.ISemaphore"/>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="T:Quartz.JobPersistenceException">
-            <summary>
-            An exception that is thrown to indicate that there has been a failure in the
-            scheduler's underlying persistence mechanism.
-            </summary>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
-        </member>
-        <member name="M:Quartz.JobPersistenceException.#ctor(System.String)">
-            <summary> <para>
-            Create a <see cref="T:Quartz.JobPersistenceException"/> with the given message.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.JobPersistenceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.JobPersistenceException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
-            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
-        </member>
-        <member name="M:Quartz.JobPersistenceException.#ctor(System.String,System.Exception)">
-            <summary> <para>
-            Create a <see cref="T:Quartz.JobPersistenceException"/> with the given message
-            and cause.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Quartz.Impl.AdoJobStore.LockException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.LockException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
-            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.MySQLDelegate">
-            <summary>
-            This is a driver delegate for the MySQL ADO.NET driver.
-            </summary>
-            <author>Marko Lahma</author>
-        </member>
-        <member name="T:Quartz.Impl.AdoJobStore.StdAdoDelegate">
-            <summary>
-            This is meant to be an abstract base class for most, if not all, <see cref="T:Quartz.Impl.AdoJobStore.IDriverDelegate"/>
-            implementations. Subclasses should override only those methods that need
-            special handling for the DBMS driver in question.
-            </summary>
-            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
-            <author>James House</author>
-            <author>Marko Lahma (.NET)</author>
         </member>
         <member name="M:Quartz.Impl.AdoJobStore.StdAdoDelegate.Initialize(Quartz.Impl.AdoJobStore.DelegateInitializationArgs)">
             <summary>
@@ -5590,6 +3950,1683 @@
             </summary>
             <param name="conn">The DB Connection.</param>
             <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.FirebirdDelegate.GetSelectNextTriggerToAcquireSql(System.Int32)">
+            <summary>
+            Gets the select next trigger to acquire SQL clause.
+            FireBird version with ROWS support.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.FiredTriggerRecord">
+            <summary>
+            Conveys the state of a fired-trigger record.
+            </summary>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireInstanceId">
+            <summary>
+            Gets or sets the fire instance id.
+            </summary>
+            <value>The fire instance id.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireTimestamp">
+            <summary>
+            Gets or sets the fire timestamp.
+            </summary>
+            <value>The fire timestamp.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.ScheduleTimestamp">
+            <summary>
+            Gets or sets the scheduled fire timestamp.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobDisallowsConcurrentExecution">
+            <summary>
+            Gets or sets a value indicating whether job disallows concurrent execution.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobKey">
+            <summary>
+            Gets or sets the job key.
+            </summary>
+            <value>The job key.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.SchedulerInstanceId">
+            <summary>
+            Gets or sets the scheduler instance id.
+            </summary>
+            <value>The scheduler instance id.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.TriggerKey">
+            <summary>
+            Gets or sets the trigger key.
+            </summary>
+            <value>The trigger key.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.FireInstanceState">
+            <summary>
+            Gets or sets the state of the fire instance.
+            </summary>
+            <value>The state of the fire instance.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.JobRequestsRecovery">
+            <summary>
+            Gets or sets a value indicating whether [job requests recovery].
+            </summary>
+            <value><c>true</c> if [job requests recovery]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.FiredTriggerRecord.Priority">
+            <summary>
+            Gets or sets the priority.
+            </summary>
+            <value>The priority.</value>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.InvalidConfigurationException">
+            <summary>
+            Exception class for when a driver delegate cannot be found for a given
+            configuration, or lack thereof.
+            </summary>
+            <author>  <a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="T:Quartz.SchedulerException">
+            <summary> 
+            Base class for exceptions thrown by the Quartz <see cref="T:Quartz.IScheduler"/>.
+            </summary>
+            <remarks>
+            SchedulerExceptions may contain a reference to another
+            <see cref="T:System.Exception"/>, which was the underlying cause of the SchedulerException.
+            </remarks>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="M:Quartz.SchedulerException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            </summary>
+        </member>
+        <member name="M:Quartz.SchedulerException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            </summary>
+            <param name="msg">The MSG.</param>
+        </member>
+        <member name="M:Quartz.SchedulerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
+            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
+        </member>
+        <member name="M:Quartz.SchedulerException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            </summary>
+            <param name="cause">The cause.</param>
+        </member>
+        <member name="M:Quartz.SchedulerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.SchedulerException"/> class.
+            </summary>
+            <param name="msg">The MSG.</param>
+            <param name="cause">The cause.</param>
+        </member>
+        <member name="M:Quartz.SchedulerException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>
+            A string representation of the current exception.
+            </returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*"/></PermissionSet>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.InvalidConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.InvalidConfigurationException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
+            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.JobStoreCMT">
+            <summary>
+             <see cref="T:Quartz.Impl.AdoJobStore.JobStoreCMT"/> is meant to be used in an application-server
+             or other software framework environment that provides 
+             container-managed-transactions. No commit / rollback will be handled by this class.
+             </summary>
+             <remarks>
+             If you need commit / rollback, use <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>
+             instead.
+             </remarks>
+             <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
+             <author>James House</author>
+             <author>Srinivas Venkatarangaiah</author>
+             <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.JobStoreSupport">
+            <summary>
+            Contains base functionality for ADO.NET-based JobStore implementations.
+            </summary>
+            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="T:Quartz.Spi.IJobStore">
+            <summary> 
+            The interface to be implemented by classes that want to provide a <see cref="T:Quartz.IJob"/>
+            and <see cref="T:Quartz.ITrigger"/> storage mechanism for the
+            <see cref="T:Quartz.Core.QuartzScheduler"/>'s use.
+            </summary>
+            <remarks>
+            Storage of <see cref="T:Quartz.IJob"/> s and <see cref="T:Quartz.ITrigger"/> s should be keyed
+            on the combination of their name and group for uniqueness.
+            </remarks>
+            <seealso cref="T:Quartz.Core.QuartzScheduler"/>
+            <seealso cref="T:Quartz.ITrigger"/>
+            <seealso cref="T:Quartz.IJob"/>
+            <seealso cref="T:Quartz.IJobDetail"/>
+            <seealso cref="T:Quartz.JobDataMap"/>
+            <seealso cref="T:Quartz.ICalendar"/>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
+            <summary>
+            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
+            used, in order to give the it a chance to Initialize.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.SchedulerStarted">
+            <summary>
+            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
+            the scheduler has started.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.SchedulerPaused">
+            <summary>
+            Called by the QuartzScheduler to inform the JobStore that
+            the scheduler has been paused.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.SchedulerResumed">
+            <summary>
+            Called by the QuartzScheduler to inform the JobStore that
+            the scheduler has resumed after being paused.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.Shutdown">
+            <summary>
+            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
+            it should free up all of it's resources because the scheduler is
+            shutting down.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.StoreJobAndTrigger(Quartz.IJobDetail,Quartz.Spi.IOperableTrigger)">
+            <summary>
+            Store the given <see cref="T:Quartz.IJobDetail"/> and <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
+            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
+            <throws>  ObjectAlreadyExistsException </throws>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.IsJobGroupPaused(System.String)">
+            <summary>
+            returns true if the given JobGroup is paused
+            </summary>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.IsTriggerGroupPaused(System.String)">
+            <summary>
+            returns true if the given TriggerGroup
+            is paused
+            </summary>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.StoreJob(Quartz.IJobDetail,System.Boolean)">
+            <summary>
+            Store the given <see cref="T:Quartz.IJobDetail"/>.
+            </summary>
+            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
+            <param name="replaceExisting">
+            If <see langword="true"/>, any <see cref="T:Quartz.IJob"/> existing in the
+            <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group should be
+            over-written.
+            </param>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RemoveJob(Quartz.JobKey)">
+            <summary>
+            Remove (delete) the <see cref="T:Quartz.IJob"/> with the given
+            key, and any <see cref="T:Quartz.ITrigger"/> s that reference
+            it.
+            </summary>
+            <remarks>
+            If removal of the <see cref="T:Quartz.IJob"/> results in an empty group, the
+            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
+            known group names.
+            </remarks>
+            <returns>
+            	<see langword="true"/> if a <see cref="T:Quartz.IJob"/> with the given name and
+            group was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RetrieveJob(Quartz.JobKey)">
+            <summary>
+            Retrieve the <see cref="T:Quartz.IJobDetail"/> for the given
+            <see cref="T:Quartz.IJob"/>.
+            </summary>
+            <returns>
+            The desired <see cref="T:Quartz.IJob"/>, or null if there is no match.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.StoreTrigger(Quartz.Spi.IOperableTrigger,System.Boolean)">
+            <summary>
+            Store the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
+            <param name="replaceExisting">If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/> existing in
+            the <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group should
+            be over-written.</param>
+            <throws>  ObjectAlreadyExistsException </throws>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RemoveTrigger(Quartz.TriggerKey)">
+            <summary>
+            Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the given key.
+            </summary>
+            <remarks>
+            <para>
+            If removal of the <see cref="T:Quartz.ITrigger"/> results in an empty group, the
+            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
+            known group names.
+            </para>
+            <para>
+            If removal of the <see cref="T:Quartz.ITrigger"/> results in an 'orphaned' <see cref="T:Quartz.IJob"/>
+            that is not 'durable', then the <see cref="T:Quartz.IJob"/> should be deleted
+            also.
+            </para>
+            </remarks>
+            <returns>
+            	<see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
+            name and group was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)">
+            <summary>
+            Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the
+            given name, and store the new given one - which must be associated
+            with the same job.
+            </summary>
+            <param name="triggerKey">The <see cref="T:Quartz.ITrigger"/> to be replaced.</param>
+            <param name="newTrigger">The new <see cref="T:Quartz.ITrigger"/> to be stored.</param>
+            <returns>
+            	<see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
+            name and group was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RetrieveTrigger(Quartz.TriggerKey)">
+            <summary>
+            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <returns>
+            The desired <see cref="T:Quartz.ITrigger"/>, or null if there is no
+            match.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.CalendarExists(System.String)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.ICalendar"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="calName">the identifier to check for</param>
+            <returns>true if a calendar exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.CheckExists(Quartz.JobKey)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.IJob"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="jobKey">the identifier to check for</param>
+            <returns>true if a job exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.CheckExists(Quartz.TriggerKey)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.ITrigger"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="triggerKey">the identifier to check for</param>
+            <returns>true if a trigger exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ClearAllSchedulingData">
+            <summary>
+            Clear (delete!) all scheduling data - all <see cref="T:Quartz.IJob"/>s, <see cref="T:Quartz.ITrigger"/>s
+            <see cref="T:Quartz.ICalendar"/>s.
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.StoreCalendar(System.String,Quartz.ICalendar,System.Boolean,System.Boolean)">
+            <summary>
+            Store the given <see cref="T:Quartz.ICalendar"/>.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="calendar">The <see cref="T:Quartz.ICalendar"/> to be stored.</param>
+            <param name="replaceExisting">If <see langword="true"/>, any <see cref="T:Quartz.ICalendar"/> existing
+            in the <see cref="T:Quartz.Spi.IJobStore"/> with the same name and group
+            should be over-written.</param>
+            <param name="updateTriggers">If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/>s existing
+            in the <see cref="T:Quartz.Spi.IJobStore"/> that reference an existing
+            Calendar with the same name with have their next fire time
+            re-computed with the new <see cref="T:Quartz.ICalendar"/>.</param>
+            <throws>  ObjectAlreadyExistsException </throws>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RemoveCalendar(System.String)">
+            <summary>
+            Remove (delete) the <see cref="T:Quartz.ICalendar"/> with the
+            given name.
+            </summary>
+            <remarks>
+            If removal of the <see cref="T:Quartz.ICalendar"/> would result in
+            <see cref="T:Quartz.ITrigger"/>s pointing to non-existent calendars, then a
+            <see cref="T:Quartz.JobPersistenceException"/> will be thrown.
+            </remarks>
+            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be removed.</param>
+            <returns>
+            	<see langword="true"/> if a <see cref="T:Quartz.ICalendar"/> with the given name
+            was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.RetrieveCalendar(System.String)">
+            <summary>
+            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be retrieved.</param>
+            <returns>
+            The desired <see cref="T:Quartz.ICalendar"/>, or null if there is no
+            match.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetNumberOfJobs">
+            <summary>
+            Get the number of <see cref="T:Quartz.IJob"/>s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetNumberOfTriggers">
+            <summary>
+            Get the number of <see cref="T:Quartz.ITrigger"/>s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetNumberOfCalendars">
+            <summary>
+            Get the number of <see cref="T:Quartz.ICalendar"/> s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetJobKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.IJob"/> s that
+            have the given group name.
+            <para>
+            If there are no jobs in the given group name, the result should be a
+            zero-length array (not <see langword="null"/>).
+            </para>
+            </summary>
+            <param name="matcher"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetTriggerKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ITrigger"/>s
+            that have the given group name.
+            <para>
+            If there are no triggers in the given group name, the result should be a
+            zero-length array (not <see langword="null"/>).
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetJobGroupNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.IJob"/>
+            groups.
+            <para>
+            If there are no known group names, the result should be a zero-length
+            array (not <see langword="null"/>).
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetTriggerGroupNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ITrigger"/>
+            groups.
+            <para>
+            If there are no known group names, the result should be a zero-length
+            array (not <see langword="null"/>).
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetCalendarNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ICalendar"/> s
+            in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            
+            <para>
+            If there are no Calendars in the given group name, the result should be
+            a zero-length array (not <see langword="null"/>).
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetTriggersForJob(Quartz.JobKey)">
+            <summary>
+            Get all of the Triggers that are associated to the given Job.
+            </summary>
+            <remarks>
+            If there are no matches, a zero-length array should be returned.
+            </remarks>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetTriggerState(Quartz.TriggerKey)">
+            <summary>
+            Get the current state of the identified <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <seealso cref="T:Quartz.TriggerState"/>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.PauseTrigger(Quartz.TriggerKey)">
+            <summary>
+            Pause the <see cref="T:Quartz.ITrigger"/> with the given key.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the
+            given group.
+            </summary>
+            <remarks>
+            The JobStore should "remember" that the group is paused, and impose the
+            pause on any new triggers that are added to the group while the group is
+            paused.
+            </remarks>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.PauseJob(Quartz.JobKey)">
+            <summary>
+            Pause the <see cref="T:Quartz.IJob"/> with the given key - by
+            pausing all of its current <see cref="T:Quartz.ITrigger"/>s.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Pause all of the <see cref="T:Quartz.IJob"/>s in the given
+            group - by pausing all of their <see cref="T:Quartz.ITrigger"/>s.
+            <para>
+            The JobStore should "remember" that the group is paused, and impose the
+            pause on any new jobs that are added to the group while the group is
+            paused.
+            </para>
+            </summary>
+            <seealso cref="T:System.String">
+            </seealso>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ResumeTrigger(Quartz.TriggerKey)">
+            <summary>
+            Resume (un-pause) the <see cref="T:Quartz.ITrigger"/> with the
+            given key.
+            
+            <para>
+            If the <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </para>
+            </summary>
+            <seealso cref="T:System.String">
+            </seealso>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Resume (un-pause) all of the <see cref="T:Quartz.ITrigger"/>s
+            in the given group.
+            <para>
+            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.GetPausedTriggerGroups">
+            <summary>
+            Gets the paused trigger groups.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ResumeJob(Quartz.JobKey)">
+            <summary> 
+            Resume (un-pause) the <see cref="T:Quartz.IJob"/> with the
+            given key.
+            <para>
+            If any of the <see cref="T:Quartz.IJob"/>'s<see cref="T:Quartz.ITrigger"/> s missed one
+            or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s misfire
+            instruction will be applied.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Resume (un-pause) all of the <see cref="T:Quartz.IJob"/>s in
+            the given group.
+            <para>
+            If any of the <see cref="T:Quartz.IJob"/> s had <see cref="T:Quartz.ITrigger"/> s that
+            missed one or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s
+            misfire instruction will be applied.
+            </para> 
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.PauseAll">
+            <summary>
+            Pause all triggers - equivalent of calling <see cref="M:Quartz.Spi.IJobStore.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+            on every group.
+            <para>
+            When <see cref="M:Quartz.Spi.IJobStore.ResumeAll"/> is called (to un-pause), trigger misfire
+            instructions WILL be applied.
+            </para>
+            </summary>
+            <seealso cref="M:Quartz.Spi.IJobStore.ResumeAll"/>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ResumeAll">
+            <summary>
+            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Spi.IJobStore.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+            on every group.
+            <para>
+            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </para>
+            
+            </summary>
+            <seealso cref="M:Quartz.Spi.IJobStore.PauseAll"/>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.AcquireNextTriggers(System.DateTimeOffset,System.Int32,System.TimeSpan)">
+            <summary>
+            Get a handle to the next trigger to be fired, and mark it as 'reserved'
+            by the calling scheduler.
+            </summary>
+            <param name="noLaterThan">If &gt; 0, the JobStore should only return a Trigger
+            that will fire no later than the time represented in this value as
+            milliseconds.</param>
+            <param name="maxCount"></param>
+            <param name="timeWindow"></param>
+            <returns></returns>
+            <seealso cref="T:Quartz.ITrigger">
+            </seealso>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)">
+            <summary> 
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler no longer plans to
+            fire the given <see cref="T:Quartz.ITrigger"/>, that it had previously acquired
+            (reserved).
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.TriggersFired(System.Collections.Generic.IList{Quartz.Spi.IOperableTrigger})">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler is now firing the
+            given <see cref="T:Quartz.ITrigger"/> (executing its associated <see cref="T:Quartz.IJob"/>),
+            that it had previously acquired (reserved).
+            </summary>
+            <returns>
+            May return null if all the triggers or their calendars no longer exist, or
+            if the trigger was not successfully put into the 'executing'
+            state.  Preference is to return an empty list if none of the triggers
+            could be fired.
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.IJobStore.TriggeredJobComplete(Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,Quartz.SchedulerInstruction)">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler has completed the
+            firing of the given <see cref="T:Quartz.ITrigger"/> (and the execution its
+            associated <see cref="T:Quartz.IJob"/>), and that the <see cref="T:Quartz.JobDataMap"/>
+            in the given <see cref="T:Quartz.IJobDetail"/> should be updated if the <see cref="T:Quartz.IJob"/>
+            is stateful.
+            </summary>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.SupportsPersistence">
+            <summary>
+            Indicates whether job store supports persistence.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.EstimatedTimeToReleaseAndAcquireTrigger">
+            <summary>
+            How long (in milliseconds) the <see cref="T:Quartz.Spi.IJobStore"/> implementation 
+            estimates that it will take to release a trigger and acquire a new one. 
+            </summary>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.Clustered">
+            <summary>
+            Whether or not the <see cref="T:Quartz.Spi.IJobStore"/> implementation is clustered.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.InstanceId">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> of the Scheduler instance's Id, 
+            prior to initialize being invoked.
+            </summary>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.InstanceName">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> of the Scheduler instance's name, 
+            prior to initialize being invoked.
+            </summary>
+        </member>
+        <member name="P:Quartz.Spi.IJobStore.ThreadPoolSize">
+            <summary>
+            Tells the JobStore the pool size used to execute jobs.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport"/> class.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection">
+            <summary>
+            Gets the connection and starts a new transaction.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
+            <summary>
+            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
+            used, in order to give it a chance to Initialize.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerStarted">
+            <seealso cref="M:Quartz.Spi.IJobStore.SchedulerStarted"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerPaused">
+            <summary>
+            Called by the QuartzScheduler to inform the JobStore that
+            the scheduler has been paused.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.SchedulerResumed">
+            <summary>
+            Called by the QuartzScheduler to inform the JobStore that
+            the scheduler has resumed after being paused.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.Shutdown">
+            <summary>
+            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
+            it should free up all of it's resources because the scheduler is
+            shutting down.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverJobs">
+            <summary>
+            Will recover any failed or misfired jobs and clean up the data store as
+            appropriate.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverJobs(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Will recover any failed or misfired jobs and clean up the data store as
+            appropriate.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJobAndTrigger(Quartz.IJobDetail,Quartz.Spi.IOperableTrigger)">
+            <summary>
+            Store the given <see cref="T:Quartz.IJobDetail"/> and <see cref="T:Quartz.Spi.IOperableTrigger"/>.
+            </summary>
+            <param name="newJob">Job to be stored.</param>
+            <param name="newTrigger">Trigger to be stored.</param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.IsJobGroupPaused(System.String)">
+            <summary>
+            returns true if the given JobGroup
+            is paused
+            </summary>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.IsTriggerGroupPaused(System.String)">
+            <summary>
+            returns true if the given TriggerGroup
+            is paused
+            </summary>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJob(Quartz.IJobDetail,System.Boolean)">
+            <summary>
+            Stores the given <see cref="T:Quartz.IJobDetail"/>.
+            </summary>
+            <param name="newJob">The <see cref="T:Quartz.IJobDetail"/> to be stored.</param>
+            <param name="replaceExisting">
+            If <see langword="true"/>, any <see cref="T:Quartz.IJob"/> existing in the
+            <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group should be over-written.
+            </param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.IJobDetail,System.Boolean)">
+            <summary> <para>
+            Insert or update a job.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.JobExists(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey)">
+            <summary>
+            Check existence of a given job.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreTrigger(Quartz.Spi.IOperableTrigger,System.Boolean)">
+            <summary>
+            Store the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="newTrigger">The <see cref="T:Quartz.ITrigger"/> to be stored.</param>
+            <param name="replaceExisting">
+            If <see langword="true"/>, any <see cref="T:Quartz.ITrigger"/> existing in
+            the <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group should
+            be over-written.
+            </param>
+            <exception cref="T:Quartz.ObjectAlreadyExistsException">
+            if a <see cref="T:Quartz.ITrigger"/> with the same name/group already
+            exists, and replaceExisting is set to false.
+            </exception>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,System.Boolean,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Insert or update a trigger.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.TriggerExists(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
+            <summary>
+            Check existence of a given trigger.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.JobKey)">
+            <summary>
+            Remove (delete) the <see cref="T:Quartz.IJob"/> with the given
+            name, and any <see cref="T:Quartz.ITrigger"/> s that reference
+            it.
+            </summary>
+            
+            <remarks>
+            If removal of the <see cref="T:Quartz.IJob"/> results in an empty group, the
+            group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
+            known group names.
+            </remarks>
+            <returns>
+            <see langword="true"/> if a <see cref="T:Quartz.IJob"/> with the given name &amp;
+            group was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.DeleteJobAndChildren(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey)">
+            <summary>
+            Delete a job and its listeners.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.Boolean)"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.IJobDetail)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.DeleteTriggerAndChildren(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
+            <summary>
+            Delete a trigger, its listeners, and its Simple/Cron/BLOB sub-table entry.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveJob(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.Boolean)"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.IJobDetail)"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReplaceTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveJob(Quartz.JobKey)">
+            <summary>
+            Retrieve the <see cref="T:Quartz.IJobDetail"/> for the given
+            <see cref="T:Quartz.IJob"/>.
+            </summary>
+            <param name="jobKey">The key identifying the job.</param>
+            <returns>The desired <see cref="T:Quartz.IJob"/>, or null if there is no match.</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveTrigger(Quartz.TriggerKey)">
+             <summary>
+             Remove (delete) the <see cref="T:Quartz.ITrigger"/> with the
+             given name.
+             </summary>
+             
+             <remarks>
+             <para>
+             If removal of the <see cref="T:Quartz.ITrigger"/> results in an empty group, the
+             group should be removed from the <see cref="T:Quartz.Spi.IJobStore"/>'s list of
+             known group names.
+             </para>
+             
+             <para>
+             If removal of the <see cref="T:Quartz.ITrigger"/> results in an 'orphaned' <see cref="T:Quartz.IJob"/>
+             that is not 'durable', then the <see cref="T:Quartz.IJob"/> should be deleted
+             also.
+             </para>
+             </remarks>
+             <param name="triggerKey">The key identifying the trigger.</param>
+             <returns>
+             <see langword="true"/> if a <see cref="T:Quartz.ITrigger"/> with the given
+             name &amp; group was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)">
+            <see cref="M:Quartz.Spi.IJobStore.ReplaceTrigger(Quartz.TriggerKey,Quartz.Spi.IOperableTrigger)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveTrigger(Quartz.TriggerKey)">
+            <summary>
+            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="triggerKey">The key identifying the trigger.</param>
+            <returns>The desired <see cref="T:Quartz.ITrigger"/>, or null if there is no match.</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerState(Quartz.TriggerKey)">
+            <summary>
+            Get the current state of the identified <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <seealso cref="F:Quartz.TriggerState.Normal"/>
+            <seealso cref="F:Quartz.TriggerState.Paused"/>
+            <seealso cref="F:Quartz.TriggerState.Complete"/>
+            <seealso cref="F:Quartz.TriggerState.Error"/>
+            <seealso cref="F:Quartz.TriggerState.None"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerState(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
+            <summary>
+            Gets the state of the trigger.
+            </summary>
+            <param name="conn">The conn.</param>
+            <param name="triggerKey">The key identifying the trigger.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.StoreCalendar(System.String,Quartz.ICalendar,System.Boolean,System.Boolean)">
+            <summary>
+            Store the given <see cref="T:Quartz.ICalendar"/>.
+            </summary>
+            <param name="calName">The name of the calendar.</param>
+            <param name="calendar">The <see cref="T:Quartz.ICalendar"/> to be stored.</param>
+            <param name="replaceExisting">
+            If <see langword="true"/>, any <see cref="T:Quartz.ICalendar"/> existing
+            in the <see cref="T:Quartz.Spi.IJobStore"/> with the same name &amp; group
+            should be over-written.
+            </param>
+            <param name="updateTriggers"></param>
+            <exception cref="T:Quartz.ObjectAlreadyExistsException">
+                      if a <see cref="T:Quartz.ICalendar"/> with the same name already
+                      exists, and replaceExisting is set to false.
+            </exception>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RemoveCalendar(System.String)">
+             <summary>
+             Remove (delete) the <see cref="T:Quartz.ICalendar"/> with the given name.
+             </summary>
+             <remarks>
+             If removal of the <see cref="T:Quartz.ICalendar"/> would result in
+             <see cref="T:Quartz.ITrigger"/>s pointing to non-existent calendars, then a
+             <see cref="T:Quartz.JobPersistenceException"/> will be thrown.
+             </remarks>
+             <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be removed.</param>
+             <returns>
+             <see langword="true"/> if a <see cref="T:Quartz.ICalendar"/> with the given name
+             was found and removed from the store.
+            </returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RetrieveCalendar(System.String)">
+            <summary>
+            Retrieve the given <see cref="T:Quartz.ITrigger"/>.
+            </summary>
+            <param name="calName">The name of the <see cref="T:Quartz.ICalendar"/> to be retrieved.</param>
+            <returns>The desired <see cref="T:Quartz.ICalendar"/>, or null if there is no match.</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfJobs">
+            <summary>
+            Get the number of <see cref="T:Quartz.IJob"/> s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfTriggers">
+            <summary>
+            Get the number of <see cref="T:Quartz.ITrigger"/> s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNumberOfCalendars">
+            <summary>
+            Get the number of <see cref="T:Quartz.ICalendar"/> s that are
+            stored in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetJobKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.IJob"/> s that
+            have the given group name.
+            </summary>
+            <remarks>
+            If there are no jobs in the given group name, the result should be a
+            zero-length array (not <see langword="null"/>).
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CalendarExists(System.String)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.ICalendar"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="calName">the identifier to check for</param>
+            <returns>true if a calendar exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckExists(Quartz.JobKey)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.IJob"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="jobKey">the identifier to check for</param>
+            <returns>true if a Job exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckExists(Quartz.TriggerKey)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.ITrigger"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="triggerKey">the identifier to check for</param>
+            <returns>true if a Trigger exists with the given identifier</returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ClearAllSchedulingData">
+            <summary>
+            Clear (delete!) all scheduling data - all <see cref="T:Quartz.IJob"/>s, <see cref="T:Quartz.ITrigger"/>s
+            <see cref="T:Quartz.ICalendar"/>s.
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerKeys(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ITrigger"/> s
+            that have the given group name.
+            </summary>
+            <remarks>
+            If there are no triggers in the given group name, the result should be a
+            zero-length array (not <see langword="null"/>).
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetJobGroupNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.IJob"/>
+            groups.
+            </summary>
+            
+            <remarks>
+            If there are no known group names, the result should be a zero-length
+            array (not <see langword="null"/>).
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggerGroupNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ITrigger"/>
+            groups.
+            </summary>
+            
+            <remarks>
+            If there are no known group names, the result should be a zero-length
+            array (not <see langword="null"/>).
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetCalendarNames">
+            <summary>
+            Get the names of all of the <see cref="T:Quartz.ICalendar"/> s
+            in the <see cref="T:Quartz.Spi.IJobStore"/>.
+            </summary>
+            <remarks>
+            If there are no Calendars in the given group name, the result should be
+            a zero-length array (not <see langword="null"/>).
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetTriggersForJob(Quartz.JobKey)">
+            <summary>
+            Get all of the Triggers that are associated to the given Job.
+            </summary>
+            <remarks>
+            If there are no matches, a zero-length array should be returned.
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTrigger(Quartz.TriggerKey)">
+            <summary>
+            Pause the <see cref="T:Quartz.ITrigger"/> with the given name.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
+            <summary>
+            Pause the <see cref="T:Quartz.ITrigger"/> with the given name.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJob(Quartz.JobKey)">
+            <summary>
+            Pause the <see cref="T:Quartz.IJob"/> with the given name - by
+            pausing all of its current <see cref="T:Quartz.ITrigger"/>s.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJob(Quartz.JobKey)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Pause all of the <see cref="T:Quartz.IJob"/>s in the given
+            group - by pausing all of their <see cref="T:Quartz.ITrigger"/>s.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CheckBlockedState(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.JobKey,System.String)">
+            <summary>
+            Determines if a Trigger for the given job should be blocked.  
+            State can only transition to StatePausedBlocked/StateBlocked from 
+            StatePaused/StateWaiting respectively.
+            </summary>
+            <returns>StatePausedBlocked, StateBlocked, or the currentState. </returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTrigger(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.TriggerKey)">
+            <summary>
+            Resume (un-pause) the <see cref="T:Quartz.ITrigger"/> with the
+            given name.
+            </summary>
+            <remarks>
+            If the <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJob(Quartz.JobKey)">
+            <summary>
+            Resume (un-pause) the <see cref="T:Quartz.IJob"/> with the
+            given name.
+            </summary>
+            <remarks>
+            If any of the <see cref="T:Quartz.IJob"/>'s <see cref="T:Quartz.ITrigger"/> s missed one
+            or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s misfire
+            instruction will be applied.
+            </remarks>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJob(Quartz.JobKey)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})">
+            <summary>
+            Resume (un-pause) all of the <see cref="T:Quartz.IJob"/>s in
+            the given group.
+            </summary>
+            <remarks>
+            If any of the <see cref="T:Quartz.IJob"/> s had <see cref="T:Quartz.ITrigger"/> s that
+            missed one or more fire-times, then the <see cref="T:Quartz.ITrigger"/>'s
+            misfire instruction will be applied.
+            </remarks>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseJobs(Quartz.Impl.Matchers.GroupMatcher{Quartz.JobKey})"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the given group.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggerGroup(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the given group.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetPausedTriggerGroups(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary> 
+            Pause all of the <see cref="T:Quartz.ITrigger"/>s in the
+            given group.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})">
+            <summary>
+            Resume (un-pause) all of the <see cref="T:Quartz.ITrigger"/>s
+            in the given group.
+            <para>
+            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Pause all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+            on every group.
+            <para>
+            When <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll"/> is called (to un-pause), trigger misfire
+            instructions WILL be applied.
+            </para>
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll"/>
+            <seealso cref="T:System.String"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll">
+            <summary>
+            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+            on every group.
+            </summary>
+            <remarks>
+            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </remarks>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeAll(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Resume (un-pause) all triggers - equivalent of calling <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ResumeTriggers(Quartz.Impl.Matchers.GroupMatcher{Quartz.TriggerKey})"/>
+            on every group.
+            <para>
+            If any <see cref="T:Quartz.ITrigger"/> missed one or more fire-times, then the
+            <see cref="T:Quartz.ITrigger"/>'s misfire instruction will be applied.
+            </para>
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.PauseAll"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.AcquireNextTriggers(System.DateTimeOffset,System.Int32,System.TimeSpan)">
+            <summary>
+            Get a handle to the next N triggers to be fired, and mark them as 'reserved'
+            by the calling scheduler.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ReleaseAcquiredTrigger(Quartz.Spi.IOperableTrigger)">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler no longer plans to
+            fire the given <see cref="T:Quartz.ITrigger"/>, that it had previously acquired
+            (reserved).
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.TriggeredJobComplete(Quartz.Spi.IOperableTrigger,Quartz.IJobDetail,Quartz.SchedulerInstruction)">
+            <summary>
+            Inform the <see cref="T:Quartz.Spi.IJobStore"/> that the scheduler has completed the
+            firing of the given <see cref="T:Quartz.ITrigger"/> (and the execution its
+            associated <see cref="T:Quartz.IJob"/>), and that the <see cref="T:Quartz.JobDataMap"/>
+            in the given <see cref="T:Quartz.IJobDetail"/> should be updated if the <see cref="T:Quartz.IJob"/>
+            is stateful.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.FindFailedInstances(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Get a list of all scheduler instances in the cluster that may have failed.
+            This includes this scheduler if it is checking in for the first time.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.FindOrphanedFailedInstances(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.Collections.Generic.IList{Quartz.Impl.AdoJobStore.SchedulerStateRecord})">
+            <summary>
+            Create dummy <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/> objects for fired triggers
+            that have no scheduler state record.  Checkin timestamp and interval are
+            left as zero on these dummy <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/> objects.
+            </summary>
+            <param name="conn"></param>
+            <param name="schedulerStateRecords">List of all current <see cref="T:Quartz.Impl.AdoJobStore.SchedulerStateRecord"/>s</param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CleanupConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Cleanup the given database connection.  This means restoring
+            any modified auto commit or transaction isolation connection
+            attributes, and then closing the underlying connection.
+            </summary>
+            
+            <remarks>
+            This is separate from closeConnection() because the Spring 
+            integration relies on being able to overload closeConnection() and
+            expects the same connection back that it originally returned
+            from the datasource. 
+            </remarks>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CloseConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CloseConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary> 
+            Closes the supplied connection.
+            </summary>
+            <param name="cth">(Optional)</param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RollbackConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder)">
+            <summary>
+            Rollback the supplied connection.
+            </summary>
+            <param name="cth">(Optional)
+            </param>
+            <throws>  JobPersistenceException thrown if a SQLException occurs when the </throws>
+            <summary> connection is rolled back
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.CommitConnection(Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,System.Boolean)">
+            <summary>
+            Commit the supplied connection.
+            </summary>
+            <param name="cth">The CTH.</param>
+            <param name="openNewTransaction">if set to <c>true</c> opens a new transaction.</param>
+            <throws>JobPersistenceException thrown if a SQLException occurs when the </throws>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteWithoutLock``1(System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
+            <summary>
+            Execute the given callback in a transaction. Depending on the JobStore, 
+            the surrounding transaction may be assumed to be already present 
+            (managed).  
+            </summary>
+            <remarks>
+            This method just forwards to ExecuteInLock() with a null lockName.
+            </remarks>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
+            <summary>
+            Execute the given callback having acquired the given lock.  
+            Depending on the JobStore, the surrounding transaction may be 
+            assumed to be already present (managed).
+            </summary> 
+            <param name="lockName">
+            The name of the lock to acquire, for example 
+            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
+            lockCallback is still executed in a transaction. 
+            </param>
+            <param name="txCallback">
+            The callback to excute after having acquired the given lock.
+            </param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0},System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0,System.Boolean})">
+            <summary>
+            Execute the given callback having optionally acquired the given lock.
+            This uses the non-managed transaction connection.
+            </summary>
+            <param name="lockName">
+            The name of the lock to acquire, for example 
+            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
+            lockCallback is still executed in a non-managed transaction. 
+            </param>
+            <param name="txCallback">
+            The callback to excute after having acquired the given lock.
+            </param>
+            <param name="txValidator"></param>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DataSource">
+            <summary> 
+            Get or set the datasource name.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.ConnectionManager">
+            <summary> 
+            Get or set the database connection manager.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Log">
+            <summary>
+            Gets the log.
+            </summary>
+            <value>The log.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.TablePrefix">
+            <summary> 
+            Get or sets the prefix that should be pre-pended to all table names.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.UseProperties">
+            <summary>
+            Set whether string-only properties will be handled in JobDataMaps.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.InstanceId">
+            <summary>
+            Get or set the instance Id of the Scheduler (must be unique within a cluster).
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.InstanceName">
+            <summary>
+            Get or set the instance Id of the Scheduler (must be unique within this server instance).
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.RetryableActionErrorLogThreshold">
+            <summary>
+            Gets or sets the number of retries before an error is logged for recovery operations.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Clustered">
+            <summary> 
+            Get or set whether this instance is part of a cluster.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.ClusterCheckinInterval">
+            <summary>
+            Get or set the frequency at which this instance "checks-in"
+            with the other instances of the cluster. -- Affects the rate of
+            detecting failed instances.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MaxMisfiresToHandleAtATime">
+            <summary>
+            Get or set the maximum number of misfired triggers that the misfire handling
+            thread will try to recover at one time (within one transaction).  The
+            default is 20.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DbRetryInterval">
+            <summary>
+            Gets or sets the database retry interval.
+            </summary>
+            <value>The db retry interval.</value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.UseDBLocks">
+            <summary>
+            Get or set whether this instance should use database-based thread
+            synchronization.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.LockOnInsert">
+            <summary> 
+            Whether or not to obtain locks when inserting new jobs/triggers.  
+            </summary>
+            <remarks>
+            <para>
+            Defaults to <see langword="true" />, which is safest - some db's (such as 
+            MS SQLServer) seem to require this to avoid deadlocks under high load,
+            while others seem to do fine without.  Settings this to false means 
+            isolation guarantees between job scheduling and trigger acquisition are
+            entirely enforced by the database.  Depending on the database and it's
+            configuration this may cause unusual scheduling behaviors.
+            </para>
+            <para>
+            Setting this property to <see langword="false" /> will provide a 
+            significant performance increase during the addition of new jobs 
+            and triggers.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MisfireThreshold">
+            <summary> 
+            The time span by which a trigger must have missed its
+            next-fire-time, in order for it to be considered "misfired" and thus
+            have its misfire instruction applied.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DontSetAutoCommitFalse">
+            <summary> 
+            Don't call set autocommit(false) on connections obtained from the
+            DataSource. This can be helpfull in a few situations, such as if you
+            have a driver that complains if it is called when it is already off.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.TxIsolationLevelSerializable">
+            <summary> 
+            Set the transaction isolation level of DB connections to sequential.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.AcquireTriggersWithinLock">
+            <summary>
+            Whether or not the query and update to acquire a Trigger for firing
+            should be performed after obtaining an explicit DB lock (to avoid 
+            possible race conditions on the trigger's db row).  This is
+            is considered unnecessary for most databases (due to the nature of
+             the SQL update that is performed), and therefore a superfluous performance hit.
+            </summary>
+            <remarks>
+            However, if batch acquisition is used, it is important for this behavior 
+            to be used for all dbs.
+            </remarks>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DriverDelegateType">
+            <summary> 
+            Get or set the ADO.NET driver delegate class name.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DriverDelegateInitString">
+            <summary>
+            The driver delegate's initialization string.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.SelectWithLockSQL">
+            <summary>
+            set the SQL statement to use to select and lock a row in the "locks"
+            table.
+            </summary>
+            <seealso cref="T:Quartz.Impl.AdoJobStore.StdRowLockSemaphore"/>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.MakeThreadsDaemons">
+            <summary>
+            Get whether the threads spawned by this JobStore should be
+            marked as daemon.  Possible threads include the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.MisfireHandler"/> 
+            and the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.ClusterManager"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.DoubleCheckLockMisfireHandler">
+            <summary>
+            Get whether to check to see if there are Triggers that have misfired
+            before actually acquiring the lock to recover them.  This should be 
+            set to false if the majority of the time, there are are misfired
+            Triggers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.Delegate">
+            <summary>
+            Get the driver delegate for DB operations.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.CanUseProperties">
+            <summary>
+            Get whether String-only properties will be handled in JobDataMaps.
+            </summary>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.SupportsPersistence">
+            <summary>
+            Indicates whether this job store supports persistence.
+            </summary>
+            <value></value>
+            <returns></returns>
+        </member>
+        <member name="T:Quartz.Spi.ITypeLoadHelper">
+            <summary> 
+            An interface for classes wishing to provide the service of loading classes
+            and resources within the scheduler...
+            </summary>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="M:Quartz.Spi.ITypeLoadHelper.Initialize">
+            <summary> 
+            Called to give the ClassLoadHelper a chance to Initialize itself,
+            including the oportunity to "steal" the class loader off of the calling
+            thread, which is the thread that is initializing Quartz.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.ITypeLoadHelper.LoadType(System.String)">
+            <summary> 
+            Return the class with the given name.
+            </summary>
+        </member>
+        <member name="M:Quartz.Spi.ITypeLoadHelper.GetResource(System.String)">
+            <summary> 
+            Finds a resource with a given name. This method returns null if no
+            resource with this name is found.
+            </summary>
+            <param name="name">name of the desired resource
+            </param>
+            <returns> a java.net.URL object
+            </returns>
+        </member>
+        <member name="M:Quartz.Spi.ITypeLoadHelper.GetResourceAsStream(System.String)">
+            <summary> 
+            Finds a resource with a given name. This method returns null if no
+            resource with this name is found.
+            </summary>
+            <param name="name">name of the desired resource
+            </param>
+            <returns> a java.io.InputStream object
+            </returns>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult">
+            <summary>
+            Helper class for returning the composite result of trying
+            to recover misfired jobs.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.#ctor(System.Boolean,System.Int32,System.DateTimeOffset)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult"/> class.
+            </summary>
+            <param name="hasMoreMisfiredTriggers">if set to <c>true</c> [has more misfired triggers].</param>
+            <param name="processedMisfiredTriggerCount">The processed misfired trigger count.</param>
+            <param name="earliestNewTimeUtc"></param>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.HasMoreMisfiredTriggers">
+            <summary>
+            Gets a value indicating whether this instance has more misfired triggers.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has more misfired triggers; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreSupport.RecoverMisfiredJobsResult.ProcessedMisfiredTriggerCount">
+            <summary>
+            Gets the processed misfired trigger count.
+            </summary>
+            <value>The processed misfired trigger count.</value>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
+            <summary>
+            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
+            used, in order to give the it a chance to Initialize.
+            </summary>
+            <param name="loadHelper"></param>
+            <param name="signaler"></param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.Shutdown">
+            <summary>
+            Called by the QuartzScheduler to inform the <see cref="T:Quartz.Spi.IJobStore"/> that
+            it should free up all of it's resources because the scheduler is
+            shutting down.
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.GetNonManagedTXConnection">
+            <summary>
+            Gets the non managed TX connection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreCMT.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
+            <summary>
+            Execute the given callback having optionally acquired the given lock.  
+            Because CMT assumes that the connection is already part of a managed
+            transaction, it does not attempt to commit or rollback the 
+            enclosing transaction.
+            </summary>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNonManagedTXConnection"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
+            <param name="lockName">
+            The name of the lock to acquire, for example 
+            "TRIGGER_ACCESS".  If null, then no lock is acquired, but the
+            txCallback is still executed in a transaction.
+            </param>
+            <param name="txCallback">Callback to execute.</param>
+        </member>
+        <member name="P:Quartz.Impl.AdoJobStore.JobStoreCMT.OpenConnection">
+            <summary>
+            Instructs this job store whether connections should be automatically opened.
+            </summary>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.JobStoreTX">
+            <summary>
+            <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/> is meant to be used in a standalone environment.
+            Both commit and rollback will be handled by this class.
+            </summary>
+            <author><a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a></author>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.Initialize(Quartz.Spi.ITypeLoadHelper,Quartz.Spi.ISchedulerSignaler)">
+            <summary>
+            Called by the QuartzScheduler before the <see cref="T:Quartz.Spi.IJobStore"/> is
+            used, in order to give the it a chance to Initialize.
+            </summary>
+            <param name="loadHelper"></param>
+            <param name="signaler"></param>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.GetNonManagedTXConnection">
+            <summary>
+            For <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>, the non-managed TX connection is just 
+            the normal connection because it is not CMT.
+            </summary> 
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.JobStoreTX.ExecuteInLock``1(System.String,System.Func{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder,``0})">
+            <summary>
+            Execute the given callback having optionally aquired the given lock.
+            For <see cref="T:Quartz.Impl.AdoJobStore.JobStoreTX"/>, because it manages its own transactions
+            and only has the one datasource, this is the same behavior as 
+            <see cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>.
+            </summary>
+            <param name="lockName">
+            The name of the lock to aquire, for example "TRIGGER_ACCESS". 
+            If null, then no lock is aquired, but the lockCallback is still
+            executed in a transaction.
+            </param>
+            <param name="txCallback">Callback to execute.</param>
+            <returns></returns>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.ExecuteInNonManagedTXLock(System.String,System.Action{Quartz.Impl.AdoJobStore.ConnectionAndTransactionHolder})"/>
+            <sssseealso crsef="JobStoreCMT.ExecuteInLock(string, ITransactionCallback)"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetNonManagedTXConnection"/>
+            <seealso cref="M:Quartz.Impl.AdoJobStore.JobStoreSupport.GetConnection"/>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.LockException">
+            <summary>
+            Exception class for when there is a failure obtaining or releasing a
+            resource lock.
+            </summary>
+            <seealso cref="T:Quartz.Impl.AdoJobStore.ISemaphore"/>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="T:Quartz.JobPersistenceException">
+            <summary>
+            An exception that is thrown to indicate that there has been a failure in the
+            scheduler's underlying persistence mechanism.
+            </summary>
+            <author>James House</author>
+            <author>Marko Lahma (.NET)</author>
+        </member>
+        <member name="M:Quartz.JobPersistenceException.#ctor(System.String)">
+            <summary> <para>
+            Create a <see cref="T:Quartz.JobPersistenceException"/> with the given message.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.JobPersistenceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.JobPersistenceException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
+            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
+        </member>
+        <member name="M:Quartz.JobPersistenceException.#ctor(System.String,System.Exception)">
+            <summary> <para>
+            Create a <see cref="T:Quartz.JobPersistenceException"/> with the given message
+            and cause.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Quartz.Impl.AdoJobStore.LockException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quartz.Impl.AdoJobStore.LockException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0). </exception>
+            <exception cref="T:System.ArgumentNullException">The info parameter is null. </exception>
+        </member>
+        <member name="T:Quartz.Impl.AdoJobStore.MySQLDelegate">
+            <summary>
+            This is a driver delegate for the MySQL ADO.NET driver.
+            </summary>
+            <author>Marko Lahma</author>
         </member>
         <member name="M:Quartz.Impl.AdoJobStore.MySQLDelegate.GetSelectNextTriggerToAcquireSql(System.Int32)">
             <summary>
@@ -12625,8 +12662,7 @@
             				<td>The re-fire count from the JobExecutionContext.</td>
             			</tr>
             		</table>
-            The default message text is <i>"Job {1}.{0} fired (by trigger {4}.{3}) at:
-            {2, date, HH:mm:ss MM/dd/yyyy"</i>
+            The default message text is <i>"Job {1}.{0} fired (by trigger {4}.{3}) at: {2:HH:mm:ss MM/dd/yyyy}"</i>
             	</para>
             	<para>
             JobSuccessMessage - available message data are: <table>
@@ -12683,8 +12719,7 @@
             result was set.</td>
             			</tr>
             		</table>
-            The default message text is <i>"Job {1}.{0} execution complete at {2, date,
-            HH:mm:ss MM/dd/yyyy} and reports: {8"</i>
+            The default message text is <i>"Job {1}.{0} execution complete at {2:HH:mm:ss MM/dd/yyyy} and reports: {8}"</i>
             	</para>
             	<para>
             JobFailedMessage - available message data are: <table>
@@ -12740,8 +12775,7 @@
             </td>
             			</tr>
             		</table>
-            The default message text is <i>"Job {1}.{0} execution failed at {2, date,
-            HH:mm:ss MM/dd/yyyy} and reports: {8"</i>
+            The default message text is <i>"Job {1}.{0} execution failed at {2:HH:mm:ss MM/dd/yyyy} and reports: {8}"</i>
             	</para>
             	<para>
             JobWasVetoedMessage - available message data are: <table>
@@ -12792,7 +12826,7 @@
             			</tr>
             		</table>
             The default message text is <i>"Job {1}.{0} was vetoed.  It was to be fired 
-            (by trigger {4}.{3}) at: {2, date, HH:mm:ss MM/dd/yyyy"</i>
+            (by trigger {4}.{3}) at: {2:HH:mm:ss MM/dd/yyyy}"</i>
             	</para>
             </remarks>
             <author>Marko Lahma (.NET)</author>
@@ -13748,6 +13782,16 @@
             <returns>
             The desired <see cref="T:Quartz.ITrigger"/>, or null if there is no match.
             </returns>
+        </member>
+        <member name="M:Quartz.Simpl.RAMJobStore.CalendarExists(System.String)">
+            <summary>
+            Determine whether a <see cref="T:Quartz.ICalendar"/> with the given identifier already
+            exists within the scheduler.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="calName">the identifier to check for</param>
+            <returns>true if a calendar exists with the given identifier</returns>
         </member>
         <member name="M:Quartz.Simpl.RAMJobStore.CheckExists(Quartz.JobKey)">
             <summary>
