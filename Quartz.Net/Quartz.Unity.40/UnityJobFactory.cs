@@ -125,10 +125,14 @@ namespace Quartz.Unity
                     RunningJob = (IJob)childContainer.Resolve(bundle.JobDetail.JobType);
                     RunningJob.Execute(context);
                 }
+                catch (JobExecutionException)
+                {
+                    throw;
+                }
                 catch (Exception ex)
                 {
-                    throw new SchedulerConfigException(string.Format(CultureInfo.InvariantCulture,
-                        "Failed to instantiate Job '{0}' of type '{1}'",
+                    throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
+                        "Failed to execute Job '{0}' of type '{1}'",
                         bundle.JobDetail.Key, bundle.JobDetail.JobType), ex);
                 }
                 finally
