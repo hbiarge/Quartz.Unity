@@ -14,7 +14,10 @@
 
 namespace Quartz.Unity
 {
-    using Microsoft.Practices.Unity;
+    using global::Unity;
+    using global::Unity.Extension;
+    using global::Unity.Injection;
+    using global::Unity.Lifetime;
 
     public class QuartzUnityExtension : UnityContainerExtension
     {

@@ -19,9 +19,9 @@ namespace Quartz.Unity
 
     using Common.Logging;
 
-    using Microsoft.Practices.Unity;
-
     using Quartz.Spi;
+
+    using global::Unity;
 
     public class UnityJobFactory : IJobFactory
     {

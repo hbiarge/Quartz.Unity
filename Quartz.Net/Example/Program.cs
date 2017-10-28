@@ -1,8 +1,8 @@
 ﻿namespace Example
 {
     using System;
-    using System.Threading;
-    using Microsoft.Practices.Unity;
+    using Unity;
+    using Unity.Lifetime;
 
     using Quartz;
     using Quartz.Impl;

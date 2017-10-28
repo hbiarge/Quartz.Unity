@@ -213,3 +213,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/Quartz.Net/.vs/Quartz.Net/v15/Server/sqlite3
