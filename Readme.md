@@ -14,16 +14,15 @@ Where you configure your **IUnityContainer** add this line:
 
     Container.AddNewExtension<QuartzUnityExtension>();
 
-In the class where you will use Quartz, you must inject an instance of IScheduler. When Unity resolves the IScheduler instance, it will be able to crete Job instances based in your container. You can cretate Jobs with explicit dependencies declared in the Job constructor that will be automatically resolved by Unity when the Job is created. 
+In the class where you will use Quartz, you must inject an instance of ISchedulerFactory. When Unity resolves the ISchedulerFactory instance, it will be able to crete an IScheduler and schedule Job instances based in your container. You can cretate Jobs with explicit dependencies declared in the Job constructor that will be automatically resolved by Unity when the Job is created. 
 
 That's all!
 
 **Internals**
 
-This Unity Extension registers the types **ISchedulerFactory** and **IScheduler** in your container like this:
+This Unity Extension registers the types **ISchedulerFactory** in your container like this:
 
     Container.RegisterType<ISchedulerFactory, UnitySchedulerFactory>(new ContainerControlledLifetimeManager());
-    Container.RegisterType<IScheduler>(new InjectionFactory(c => c.Resolve<ISchedulerFactory>().GetScheduler()));
 
 So the **ISchedulerFactory** is a Singleton managed by the container.
 

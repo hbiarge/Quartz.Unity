@@ -1,4 +1,6 @@
-﻿namespace Example
+﻿using System.Threading.Tasks;
+
+namespace Example
 {
     using System;
 
@@ -13,26 +15,18 @@
             IConfigManager configManager,
             IDisposableResource diposableResource)
         {
-            if (configManager == null)
-            {
-                throw new ArgumentNullException("configManager");
-            }
-
-            if (diposableResource == null)
-            {
-                throw new ArgumentNullException("diposableResource");
-            }
-
-            this.configManager = configManager;
-            this.diposableResource = diposableResource;
+            this.configManager = configManager ?? throw new ArgumentNullException(nameof(configManager));
+            this.diposableResource = diposableResource ?? throw new ArgumentNullException(nameof(diposableResource));
         }
 
-        public void Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
             Console.WriteLine("---------------");
             Console.Write("Job fired! ");
             Console.WriteLine("ConfigManager type is {0}", configManager.GetValue("type"));
             diposableResource.DoSomething();
+
+            return Task.FromResult<object>(null);
         }
     }
 }

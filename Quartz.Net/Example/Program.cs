@@ -1,4 +1,7 @@
-﻿namespace Example
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace Example
 {
     using System;
     using Unity;
@@ -11,7 +14,7 @@
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var container = new UnityContainer();
 
@@ -21,17 +24,22 @@
             container.AddNewExtension<QuartzUnityExtension>();
 
             Console.WriteLine("Resolving IScheduler instance...");
-            var scheduler = container.Resolve<IScheduler>();
+            var schedulerFactory = container.Resolve<ISchedulerFactory>();
+
+            var scheduler = await schedulerFactory.GetScheduler(CancellationToken.None);
 
             Console.WriteLine("Scheduling job...");
-            scheduler.ScheduleJob(
+            await scheduler.ScheduleJob(
                 new JobDetailImpl("TestJob", typeof(MyJob)),
                 new CalendarIntervalTriggerImpl("TestTrigger", IntervalUnit.Second, 5));
 
             Console.WriteLine("Starting scheduler...");
-            scheduler.Start();
+            await scheduler.Start();
 
-            Console.ReadLine();
+            Console.WriteLine("60 seconds to run tasks");
+            await Task.Delay(TimeSpan.FromSeconds(60));
+
+            await scheduler.Shutdown();
         }
     }
 }
