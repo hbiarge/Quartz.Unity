@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+    <RootNamespace>Quartz.Unity</RootNamespace>
+    <AssemblyName>Quartz.Unity</AssemblyName>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Quartz.Unity.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Quartz" Version="3.0.0" />
+    <PackageReference Include="Unity.Container" Version="5.5.5" />
+  </ItemGroup>
+  
+</Project>

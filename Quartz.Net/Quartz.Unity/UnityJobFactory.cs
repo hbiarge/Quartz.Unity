@@ -19,15 +19,12 @@ namespace Quartz.Unity
     using System;
     using System.Globalization;
 
-    using Common.Logging;
-
     using Quartz.Spi;
 
     using global::Unity;
 
     public class UnityJobFactory : IJobFactory
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(UnityJobFactory));
         private readonly IUnityContainer container;
 
         static UnityJobFactory()
@@ -42,16 +39,16 @@ namespace Quartz.Unity
         public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
         {
             var jobDetail = bundle.JobDetail;
-            var jobType = jobDetail.JobType;
+            //var jobType = jobDetail.JobType;
 
             try
             {
-                if (Log.IsDebugEnabled)
-                {
-                    Log.Debug(string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Producing instance of Job '{0}', class={1}", new object[] { jobDetail.Key, jobType.FullName }));
-                }
+                //if (Log.IsDebugEnabled)
+                //{
+                //    Log.Debug(string.Format(
+                //        CultureInfo.InvariantCulture,
+                //        "Producing instance of Job '{0}', class={1}", new object[] { jobDetail.Key, jobType.FullName }));
+                //}
 
                 return new JobWrapper(bundle, container);
             }

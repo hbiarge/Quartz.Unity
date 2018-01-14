@@ -95,9 +95,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quartz.Unity.45\Quartz.Unity.45.csproj">
-      <Project>{5e7b59f1-a8f9-41dd-a582-c55a2cf33e3e}</Project>
-      <Name>Quartz.Unity.45</Name>
+    <ProjectReference Include="..\Quartz.Unity\Quartz.Unity.csproj">
+      <Project>{0ed91d17-3ee0-4d76-8ce3-eb304dc0aa9a}</Project>
+      <Name>Quartz.Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
