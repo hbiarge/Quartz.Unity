@@ -8,11 +8,25 @@
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Quartz.Unity.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RepositoryUrl>https://github.com/hbiarge/Quartz.Unity</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageLicenseUrl>https://github.com/hbiarge/Quartz.Unity/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Quartz;Unity</PackageTags>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
+    <Authors>Hugo Biarge</Authors>
+    <Owners>Hugo Biarge</Owners>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Quartz" Version="3.0.0" />
-    <PackageReference Include="Unity.Container" Version="5.5.5" />
+    <PackageReference Include="Quartz" Version="3.0.7" />
+    <PackageReference Include="Unity.Container" Version="5.9.2" />
+
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
   </ItemGroup>
   
 </Project>
