@@ -3,23 +3,35 @@
     <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <RootNamespace>Quartz.Unity</RootNamespace>
     <AssemblyName>Quartz.Unity</AssemblyName>
-  </PropertyGroup>
-  
-  <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Quartz.Unity.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>Quartz.Unity</PackageId>
+    <PackageVersion>3.1.0</PackageVersion>
+    <Title>Quartz.Unity</Title>
+    <Authors>Hugo Biarge</Authors>
+    <Owners>Hugo Biarge</Owners>
+    <PackageSummary>Quartz.Net integration with Unity.</PackageSummary>
+    <PackageDescription>Provides an extension to register ISchedulerFactory with Unity and a JobFactory to allow Unity to resolve Jobs.</PackageDescription>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/hbiarge/Quartz.Unity/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/hbiarge/Quartz.Unity</PackageProjectUrl>
+    <PackageTags>Quartz, Unity</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <RepositoryUrl>https://github.com/hbiarge/Quartz.Unity</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <PackageLicenseUrl>https://github.com/hbiarge/Quartz.Unity/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>Quartz;Unity</PackageTags>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>    
     <AssemblyVersion>3.1.0.0</AssemblyVersion>
     <FileVersion>3.1.0.0</FileVersion>
-    <Authors>Hugo Biarge</Authors>
-    <Owners>Hugo Biarge</Owners>
   </PropertyGroup>
   
   <ItemGroup>
