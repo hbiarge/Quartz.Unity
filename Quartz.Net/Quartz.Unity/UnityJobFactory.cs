@@ -96,13 +96,13 @@ namespace Quartz.Unity
             /// </remarks>
             /// <param name="context">The execution context.</param>
             /// <exception cref="SchedulerConfigException">Job cannot be instantiated.</exception>
-            public Task Execute(IJobExecutionContext context)
+            public async Task Execute(IJobExecutionContext context)
             {
                 var childContainer = unityContainer.CreateChildContainer();
                 try
                 {
                     RunningJob = (IJob)childContainer.Resolve(bundle.JobDetail.JobType);
-                    return RunningJob.Execute(context);
+                    await RunningJob.Execute(context);
                 }
                 catch (JobExecutionException)
                 {
